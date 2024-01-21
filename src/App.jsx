@@ -6,10 +6,12 @@ import {Slider} from "@/components/ui/slider.jsx";
 function App() {
 
   return (
-      <div>
-          <div className="p-12 bg-background">
+      <div className="dark bg-background">
+
+          <div className="p-12 text-card-foreground bg-card">
             <TypographyDemo/>
              <Slider></Slider>
+              <Button>Test</Button>
           </div>
 
       </div>
