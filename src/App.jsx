@@ -7,9 +7,9 @@ function App() {
 
   return (
       <div>
-          <div className="p-12 primary">
+          <div className="p-12 bg-background">
             <TypographyDemo/>
-             <Slider className="bg-primary-foreground"></Slider>
+             <Slider></Slider>
           </div>
 
       </div>
