@@ -3,18 +3,18 @@
 @tailwind utilities;
 @layer base {
     :root {
-      --card: 120 0% 100%;
+      --card: 0 0% 100%;
       --ring: 220.67 97.83% 36.08%;
-      --input: 124.53 17.39% 51.58%;
+      --input: 214.3 31.8% 91.4%;
       --muted: 210 40% 96.1%;
       --accent: 210 40% 96.1%;
-      --border: 138.11 24.25% 43.34%;
+      --border: 214.3 31.8% 91.4%;
       --popover: 0 0% 100%;
-      --primary: 144.91 32.94% 46.87%;
+      --primary: 220.47 98.26% 36.08%;
       --secondary: 210 40% 96.1%;
-      --background: 106.42 0% 89.23%;
-      --foreground: 222.2 0% 0%;
-      --destructive: 0 26.44% 55.04%;
+      --background: 0 0% 100%;
+      --foreground: 222.2 84% 4.9%;
+      --destructive: 0 92.99% 56.11%;
       --card-foreground: 222.2 84% 4.9%;
       --muted-foreground: 215.4 16.3% 46.9%;
       --accent-foreground: 222.2 47.4% 11.2%;
@@ -26,24 +26,74 @@
     }
 
     .dark {
-      --card: 113.21 45.22% 2.12%;
-      --ring: 115.47 15.44% 34.65%;
-      --input: 120 16.92% 19.08%;
-      --muted: 163.02 16.33% 12.56%;
-      --accent: 108.68 19.65% 51.17%;
-      --border: 101.89 19.37% 18.04%;
-      --popover: 113.21 7.29% 8.6%;
-      --primary: 108.68 29.71% 61.7%;
+      --card: 234.55 17.46% 12.35%;
+      --ring: 225.45 71.22% 72.75%;
+      --input: 232 20% 14.71%;
+      --muted: 232.5 15.44% 18.32%;
+      --accent: 227.73 48.05% 48.58%;
+      --border: 232.5 15.38% 30.59%;
+      --popover: 234.55 17.46% 12.35%;
+      --primary: 225.45 71.22% 72.75%;
       --secondary: 0 0% 82.75%;
-      --background: 167.55 0% 0%;
-      --foreground: 99.62 100% 92.32%;
-      --destructive: 1.58 23.24% 37.45%;
-      --card-foreground: 229.76 0% 100%;
-      --muted-foreground: 233.79 0% 63.85%;
-      --accent-foreground: 210 0% 100%;
-      --popover-foreground: 234 0% 100%;
-      --primary-foreground: 108.68 13.72% 15.56%;
+      --background: 240 13.73% 10%;
+      --foreground: 0 0% 82.75%;
+      --destructive: 1.58 47.5% 52.94%;
+      --card-foreground: 229.76 31.78% 74.71%;
+      --muted-foreground: 233.79 11.37% 50%;
+      --accent-foreground: 210 40% 98%;
+      --popover-foreground: 234 12.4% 52.55%;
+      --primary-foreground: 234.55 17.46% 12.35%;
       --secondary-foreground: 0 0% 20%;
       --destructive-foreground: 210 40% 98.04%;
     }
   }
+
+
+
+
+/*@layer base {*/
+/*    :root {*/
+/*      --card: 120 0% 100%;*/
+/*      --ring: 220.67 97.83% 36.08%;*/
+/*      --input: 124.53 17.39% 51.58%;*/
+/*      --muted: 210 40% 96.1%;*/
+/*      --accent: 210 40% 96.1%;*/
+/*      --border: 138.11 24.25% 43.34%;*/
+/*      --popover: 0 0% 100%;*/
+/*      --primary: 144.91 32.94% 46.87%;*/
+/*      --secondary: 210 40% 96.1%;*/
+/*      --background: 106.42 0% 89.23%;*/
+/*      --foreground: 222.2 0% 0%;*/
+/*      --destructive: 0 26.44% 55.04%;*/
+/*      --card-foreground: 222.2 84% 4.9%;*/
+/*      --muted-foreground: 215.4 16.3% 46.9%;*/
+/*      --accent-foreground: 222.2 47.4% 11.2%;*/
+/*      --popover-foreground: 222.2 84% 4.9%;*/
+/*      --primary-foreground: 210 40% 98%;*/
+/*      --secondary-foreground: 222.2 47.4% 11.2%;*/
+/*      --destructive-foreground: 210 40% 98%;*/
+/*      --radius: 0.5rem;*/
+/*    }*/
+
+/*    .dark {*/
+/*      --card: 113.21 45.22% 2.12%;*/
+/*      --ring: 115.47 15.44% 34.65%;*/
+/*      --input: 120 16.92% 19.08%;*/
+/*      --muted: 163.02 16.33% 12.56%;*/
+/*      --accent: 108.68 19.65% 51.17%;*/
+/*      --border: 101.89 19.37% 18.04%;*/
+/*      --popover: 113.21 7.29% 8.6%;*/
+/*      --primary: 108.68 29.71% 61.7%;*/
+/*      --secondary: 0 0% 82.75%;*/
+/*      --background: 167.55 0% 0%;*/
+/*      --foreground: 99.62 100% 92.32%;*/
+/*      --destructive: 1.58 23.24% 37.45%;*/
+/*      --card-foreground: 229.76 0% 100%;*/
+/*      --muted-foreground: 233.79 0% 63.85%;*/
+/*      --accent-foreground: 210 0% 100%;*/
+/*      --popover-foreground: 234 0% 100%;*/
+/*      --primary-foreground: 108.68 13.72% 15.56%;*/
+/*      --secondary-foreground: 0 0% 20%;*/
+/*      --destructive-foreground: 210 40% 98.04%;*/
+/*    }*/
+/*  }*/
