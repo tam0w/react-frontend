@@ -9,7 +9,7 @@ function App() {
   return (
       <div className="dark bg-background">
 
-          <Navbar className=""></Navbar>
+          <Navbar></Navbar>
 
           <div className="p-12 text-card-foreground bg-card">
             <TypographyDemo/>
