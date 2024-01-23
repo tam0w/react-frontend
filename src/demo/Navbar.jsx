@@ -1,12 +1,13 @@
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu.jsx";
 import { Separator } from "@/components/ui/separator"
-
+import image from "@/assets/greensmol.png";
 
 export function Navbar({ onSignOut }) {
     return (
         <div>
             <NavigationMenu className="">
                 <NavigationMenuList className="w-screen ">
+                    <img src={image} alt="Greensmol" className="absolute start-4 h-12 mt-6 my-4"/>
                     <NavigationMenuItem className="">
                         Home
                     </NavigationMenuItem>

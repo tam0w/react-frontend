@@ -34,7 +34,7 @@ const NavigationMenuItem = React.forwardRef(({ className, children, ...props }, 
   <NavigationMenuPrimitive.Item
     ref={ref}
     className={cn(
-      "px-6 pt-3 pb-4 font-bold text-xl leading-7 transition-colors hover:bg-muted hover:opacity-70 hover:bg-blend-color hover:text-accent-foreground focus:bg-primary focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50",
+      "px-6 pt-5 pb-4 font-normal text-xl leading-7 transition-colors hover:bg-muted hover:opacity-70 hover:bg-blend-color hover:text-secondary-foreground focus:bg-primary focus:text-secondary-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50",
       className
     )}
     {...props}>
@@ -43,7 +43,7 @@ const NavigationMenuItem = React.forwardRef(({ className, children, ...props }, 
 ))
 NavigationMenuItem.displayName = NavigationMenuPrimitive.Item.displayName
 const navigationMenuTriggerStyle = cva(
-  "group text-card-foreground flex items-center justify-center rounded-sm"
+  "groupu flex items-center justify-center rounded-sm"
 )
 
 const NavigationMenuTrigger = React.forwardRef(({ className, children, ...props }, ref) => (
@@ -74,7 +74,7 @@ const NavigationMenuLink = React.forwardRef(({ className, children, ...props }, 
   <NavigationMenuPrimitive.Link
     ref={ref}
     className={cn(
-      "p-2 h-max pl-4 min-w-52 text-xl font-medium transition-colors hover:bg-primary hover:text-accent-foreground focus:bg-primary focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50",
+      "p-2 h-max pl-4 min-w-52 text-xl font-medium transition-colors hover:bg-primary hover:text-secondary-foreground focus:bg-primary focus:text-secondary-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50",
       className
     )}
     {...props}>
