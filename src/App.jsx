@@ -7,12 +7,11 @@ import {Navbar} from "@/demo/Navbar.jsx";
 function App() {
 
   return (
-      <div className="dark bg-background">
+      <div className="dark bg-background h-screen">
 
           <Navbar></Navbar>
 
           <div className="p-12 text-card-foreground bg-card">
-            <TypographyDemo/>
              <Slider></Slider>
               <Button>Test</Button>
           </div>
