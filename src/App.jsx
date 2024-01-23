@@ -6,7 +6,7 @@ import {Navbar} from "@/demo/Navbar.jsx";
 function App() {
 
   return (
-      <div className="dark home h-screen based-text">
+      <div className="dark home h-screen">
 
           <div className="">
           <Navbar></Navbar>
