@@ -6,7 +6,7 @@ export function Navbar({ onSignOut }) {
     return (
         <div>
             <NavigationMenu className="">
-                <NavigationMenuList className="w-screen bg-secondary">
+                <NavigationMenuList className="w-screen ">
                     <NavigationMenuItem className="">
                         Home
                     </NavigationMenuItem>
@@ -21,15 +21,17 @@ export function Navbar({ onSignOut }) {
                         <NavigationMenuContent className="">
                             <NavigationMenuLink>
                                 <h1 className="">Profile</h1>
-                                <h1 className="text-secondary-foreground text-sm">Profile page to view user info and data.</h1>
-                                <Separator className="pt-1 mt-2" />
+                                <h1 className="text-muted-foreground text-sm">Profile page to view user info and data.</h1>
+
 
                             </NavigationMenuLink>
+                            <Separator className="py-0.5 my-2 bg-muted-foreground" />
                             <NavigationMenuLink>
                                 <h1 className="">Settings</h1>
-                                <h1 className="text-secondary-foreground text-sm">Profile page to view user info and data.</h1>
-                                <Separator className="pt-1 mt-2" />
+                                <h1 className="text-muted-foreground text-sm">Profile page to view user info and data.</h1>
+
                             </NavigationMenuLink>
+                            <Separator className="py-0.5 my-2 bg-muted-foreground" />
                             <NavigationMenuLink onClick={onSignOut}>
                                 Sign Out
 

@@ -23,7 +23,7 @@ const NavigationMenuList = React.forwardRef(({ className, ...props }, ref) => (
   <NavigationMenuPrimitive.List
     ref={ref}
     className={cn(
-      "border-b-4 border-primary group text-card-foreground flex flex-1 list-none items-center justify-center ",
+      " group text-card-foreground flex flex-1 list-none items-center justify-center ",
       className
     )}
     {...props} />
@@ -34,7 +34,7 @@ const NavigationMenuItem = React.forwardRef(({ className, children, ...props }, 
   <NavigationMenuPrimitive.Item
     ref={ref}
     className={cn(
-      "bg-secondary px-6 pt-3 pb-4 font-bold text-xl leading-7 transition-colors hover:bg-muted hover:text-accent-foreground focus:bg-muted focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50",
+      "px-6 pt-3 pb-4 font-bold text-xl leading-7 transition-colors hover:bg-muted hover:opacity-70 hover:bg-blend-color hover:text-accent-foreground focus:bg-primary focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50",
       className
     )}
     {...props}>
@@ -74,7 +74,7 @@ const NavigationMenuLink = React.forwardRef(({ className, children, ...props }, 
   <NavigationMenuPrimitive.Link
     ref={ref}
     className={cn(
-      "p-2 h-max pl-4 min-w-52 text-xl font-medium transition-colors hover:bg-muted hover:text-accent-foreground focus:bg-muted focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50",
+      "p-2 h-max pl-4 min-w-52 text-xl font-medium transition-colors hover:bg-primary hover:text-accent-foreground focus:bg-primary focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50",
       className
     )}
     {...props}>
@@ -87,7 +87,7 @@ const NavigationMenuViewport = React.forwardRef(({ className, ...props }, ref) =
   <div className={cn("relative text-card-foreground right-[45%] -top-3 flex justify-center")}>
     <NavigationMenuPrimitive.Viewport
       className={cn(
-        "origin-top-left absolute text-card-foreground m-10 h-[var(--radix-navigation-menu-viewport-height)] overflow-hidden border-x-4 border-b-4 border-primary bg-secondary shadow data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)]",
+        "origin-top-left absolute text-card-foreground m-10 h-[var(--radix-navigation-menu-viewport-height)] overflow-hidden bg-muted ring-4 ring-muted opacity-85 shadow data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-75 data-[state=open]:zoom-in-75 md:w-[var(--radix-navigation-menu-viewport-width)]",
         className
       )}
       ref={ref}

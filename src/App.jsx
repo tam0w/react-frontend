@@ -11,7 +11,7 @@ function App() {
           <div className="">
           <Navbar></Navbar>
           </div>
-          <div className="p-12 text-card-foreground bg-card">
+          <div className="p-56 text-card-foreground border-4 border-zinc-600">
              <Slider></Slider>
               <Button>Test</Button>
           </div>
