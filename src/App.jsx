@@ -2,10 +2,11 @@ import {Button} from "@/components/ui/button.jsx";
 import {Slider} from "@/components/ui/slider.jsx";
 import {Navbar} from "@/demo/Navbar.jsx";
 
+
 function App() {
 
   return (
-      <div className="dark bg-background h-screen">
+      <div className="dark home h-screen">
 
           <div className="">
           <Navbar></Navbar>
