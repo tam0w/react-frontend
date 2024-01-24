@@ -2,51 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 @layer base {
-  :root {
-    --background: 204 61% 99%;
-    --foreground: 204 64% 4%;
-    --card: 204 61% 99%;
-    --card-foreground: 204 64% 4%;
-    --popover: 204 61% 99%;
-    --popover-foreground: 204 64% 4%;
-    --primary: 204 28% 25%;
-    --primary-foreground: 204 28% 85%;
-    --secondary: 174 28% 25%;
-    --secondary-foreground: 174 28% 85%;
-    --accent: 234 28% 25%;
-    --accent-foreground: 234 28% 85%;
-    --destructive: 3 83% 38%;
-    --destructive-foreground: 3 83% 98%;
-    --muted: 174 24% 91%;
-    --muted-foreground: 174 4% 29%;
-    --border: 204 4% 92%;
-    --input: 204 4% 92%;
-    --ring: 204 28% 25%;
-    --radius: 0.5rem;
-  }
+    :root {
+      --background: 204 61% 99%;
+      --foreground: 204 64% 4%;
+      --card: 204 61% 99%;
+      --card-foreground: 204 64% 4%;
+      --popover: 204 61% 99%;
+      --popover-foreground: 204 64% 4%;
+      --primary: 204 28% 25%;
+      --primary-foreground: 204 28% 85%;
+      --secondary: 174 28% 25%;
+      --secondary-foreground: 174 28% 85%;
+      --accent: 234 28% 25%;
+      --accent-foreground: 234 28% 85%;
+      --destructive: 3 83% 38%;
+      --destructive-foreground: 3 83% 98%;
+      --muted: 174 24% 91%;
+      --muted-foreground: 174 4% 29%;
+      --border: 204 4% 92%;
+      --input: 204 4% 92%;
+      --ring: 204 28% 25%;
+      --radius: 0.5rem;
+    }
 
-  .dark {
-    --background: 204 36% 0%;
-    --foreground: 204 25% 99%;
-    --card: 204 36% 0%;
-    --card-foreground: 204 25% 99%;
-    --popover: 204 36% 0%;
-    --popover-foreground: 204 25% 99%;
-    --primary: 204 48.53% 19.68%;
-    --primary-foreground: 204 28% 85%;
-    --secondary: 126.79 12.59% 14.35%;
-    --secondary-foreground: 129.06 93.38% 65.13%;
-    --accent: 203.77 45.22% 42.9%;
-    --accent-foreground: 234 28% 85%;
-    --destructive: 3 45.69% 46.46%;
-    --destructive-foreground: 0 0% 100%;
-    --muted: 212.83 42.5% 8.1%;
-    --muted-foreground: 174 4% 71%;
-    --border: 204 4% 12%;
-    --input: 204 4% 12%;
-    --ring: 204 28% 25%;
-    font-family: "Poppins", sans-serif;
-  }
+    .dark {
+      --background: 204 3.4% 8.18%;
+      --foreground: 204 25% 99%;
+      --card: 204 36% 0%;
+      --card-foreground: 204 25% 99%;
+      --popover: 204 36% 0%;
+      --popover-foreground: 204 25% 99%;
+      --primary: 204 48.53% 19.68%;
+      --primary-foreground: 204 28% 85%;
+      --secondary: 129.06 24.25% 12.38%;
+      --secondary-foreground: 129.06 93.38% 65.13%;
+      --accent: 203.77 45.22% 42.9%;
+      --accent-foreground: 234 28% 85%;
+      --destructive: 3 45.69% 46.46%;
+      --destructive-foreground: 0 0% 100%;
+      --muted: 212.83 42.5% 8.1%;
+      --muted-foreground: 174 4% 71%;
+      --border: 204 4% 12%;
+      --input: 204 4% 12%;
+      --ring: 204 28% 25%;
+    }
 
   h1.based {
     font-family: "Poppins", sans-serif;
@@ -56,6 +55,18 @@
     font-size: 60px;
     font-weight: 500;
   }
+
+  h1.normal {
+    font-family: "Poppins", sans-serif;
+    font-size: 60px;
+    font-weight: 500;
+  }
+
+  .font {
+    font-family: "Poppins", sans-serif;
+  }
+
+
 
 
   /*@layer base {*/

@@ -26,13 +26,13 @@ export function Navbar({ onSignOut }) {
 
 
                             </NavigationMenuLink>
-                            <Separator className="py-0.5 my-2 bg-muted-foreground" />
+                            {/*<Separator className="py-0.5 my-2 bg-muted-foreground" />*/}
                             <NavigationMenuLink>
                                 <h1 className="">Settings</h1>
                                 <h1 className="text-muted-foreground text-sm">Profile page to view user info and data.</h1>
 
                             </NavigationMenuLink>
-                            <Separator className="py-0.5 my-2 bg-muted-foreground" />
+                            {/*<Separator className="py-0.5 my-2 bg-muted-foreground" />*/}
                             <NavigationMenuLink onClick={onSignOut}>
                                 Sign Out
 
