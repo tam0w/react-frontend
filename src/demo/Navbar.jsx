@@ -7,8 +7,11 @@ export function Navbar({ onSignOut }) {
     return (
         <div>
             <NavigationMenu className="">
-                <NavigationMenuList className="w-screen ">
+                <NavigationMenuList className="w-screen flex">
+
                     <img src={image} alt="Greensmol" className="absolute start-4 h-12 mt-6 my-4"/>
+
+
                     <NavigationMenuItem className="">
                         <HomeIcon className="w-6 h-6 mx-2 my-0.5 "/>Home
                     </NavigationMenuItem>
@@ -18,7 +21,8 @@ export function Navbar({ onSignOut }) {
                     <NavigationMenuItem>
                         Pricing
                     </NavigationMenuItem>
-                    <NavigationMenuItem className="">
+
+                    <NavigationMenuItem className="absolute end-4 -mr-4">
                         <NavigationMenuTrigger className="">Account <AvatarIcon className="w-6 h-6 mx-2 my-0.5 "/></NavigationMenuTrigger>
                         <NavigationMenuContent className="">
                             <NavigationMenuLink>
@@ -40,6 +44,8 @@ export function Navbar({ onSignOut }) {
                             </NavigationMenuLink>
                         </NavigationMenuContent>
                     </NavigationMenuItem>
+
+
                 </NavigationMenuList>
             </NavigationMenu>
         </div>
