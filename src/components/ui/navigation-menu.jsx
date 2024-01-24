@@ -34,7 +34,7 @@ const NavigationMenuItem = React.forwardRef(({ className, children, ...props }, 
   <NavigationMenuPrimitive.Item
     ref={ref}
     className={cn(
-      "px-6 pt-5 pb-4 font-normal text-xl leading-7 transition-colors hover:bg-muted hover:opacity-70 hover:bg-blend-color hover:text-secondary-foreground/80 focus:bg-primary focus:text-secondary-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50",
+      "flex px-6 pt-5 pb-4 font-normal text-xl leading-7 transition-colors hover:bg-muted hover:opacity-70 hover:bg-blend-color hover:text-secondary-foreground/80 focus:bg-primary focus:text-secondary-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50",
       className
     )}
     {...props}>
