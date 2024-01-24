@@ -1,7 +1,7 @@
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu.jsx";
 import { Separator } from "@/components/ui/separator"
 import image from "@/assets/greensmol.png";
-import {HomeIcon} from "@radix-ui/react-icons";
+import {AvatarIcon, DashboardIcon, HomeIcon, IdCardIcon} from "@radix-ui/react-icons";
 
 export function Navbar({ onSignOut }) {
     return (
@@ -10,7 +10,7 @@ export function Navbar({ onSignOut }) {
                 <NavigationMenuList className="w-screen ">
                     <img src={image} alt="Greensmol" className="absolute start-4 h-12 mt-6 my-4"/>
                     <NavigationMenuItem className="">
-                        <HomeIcon className="w-6 h-6"/>Home
+                        <HomeIcon className="w-6 h-6 mx-2 my-0.5 "/>Home
                     </NavigationMenuItem>
                     <NavigationMenuItem>
                         Dashboard
@@ -19,7 +19,7 @@ export function Navbar({ onSignOut }) {
                         Pricing
                     </NavigationMenuItem>
                     <NavigationMenuItem className="">
-                        <NavigationMenuTrigger className="">Account</NavigationMenuTrigger>
+                        <NavigationMenuTrigger className="">Account <AvatarIcon className="w-6 h-6 mx-2 my-0.5 "/></NavigationMenuTrigger>
                         <NavigationMenuContent className="">
                             <NavigationMenuLink>
                                 <h1 className="">Profile</h1>
