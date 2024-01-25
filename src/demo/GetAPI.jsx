@@ -1,47 +1,47 @@
 import {useEffect, useState} from "react";
-import {cn} from "@/lib/utils.js";
+import {Button} from "@/components/ui/button.jsx";
+import {ButtonSpin} from "@/demo/ButtonSpin.jsx";
+import {Card} from "@/components/ui/card.jsx";
 
+const url = "https://rest-api-t8pa.onrender.com/"
 export function GetAPI() {
 
     const [state, setState] = useState([])
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(0)
 
-    useEffect(() => {
-        fetch(url)
-        .then(response => response.json())
-        .then(data => setState(JSON.stringify(data)), setLoading(false))
-    }, []);
+    function loadData() {
+        setLoading(1);
+            const timer = setTimeout(() => {
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        setState(data.message);
+                        setLoading(2);
+                    });
+            }, 3000);
+            return () => clearTimeout(timer);
 
+    }
     function getValue() {
 
-        if (loading) {
-            return (<svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={cn("animate-spin")}
-    >
-      <path d="M21 12a9 9 0 1 1-6.219-8.56" />
-    </svg>)
+        if (loading == 1) {
+            return <ButtonSpin/>
         }
 
-        return (
-            <div>
-                <h1 className='based'>{state}</h1>
-            </div>
-        )
-    }
+        else if (loading == 0) {
+            return <div className="m-8 flex items-center justify-center"><Button className='' size='lg' onClick={loadData}><h1 className='font text-card-foreground py-4 text-4xl flex items-center justify-center'>Load Data</h1></Button></div>
+        }
 
-    const url = "https://rest-api-t8pa.onrender.com/"
+       else {
+            return <div className='flex justify-center'><Card className='m-8 w-1/5'><h1 className='font text-card-foreground py-4 text-4xl flex items-center justify-center'>Data: </h1><h1 className='text-secondary-foreground font py-4 text-4xl flex items-center justify-center'>{state}</h1></Card></div>
 
+            }
+        }
 
     return (
-        <p>{getValue}</p>
-    )
+        <div>
+
+            {getValue()}
+    </div>)
+
 }

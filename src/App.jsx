@@ -1,7 +1,6 @@
 import {Navbar} from "@/demo/Navbar.jsx";
 import {Counter} from "@/demo/Counter.jsx";
 import {GetAPI} from "@/demo/GetAPI.jsx";
-
 function App() {
 
   return (
