@@ -58,8 +58,18 @@
 
   h1.normal {
     font-family: "Poppins", sans-serif;
-    font-size: 60px;
+    font-size: 36px;
+    line-height: 40px;
     font-weight: 500;
+    color: hsl(var(--foreground));
+  }
+
+  h1.big {
+    font-family: "Poppins", sans-serif;
+    font-size: 60px;
+    line-height: 40px;
+    font-weight: 500;
+    color: hsl(var(--foreground));
   }
 
   .font {

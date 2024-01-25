@@ -1,6 +1,7 @@
 import {Navbar} from "@/demo/Navbar.jsx";
 import {Counter} from "@/demo/Counter.jsx";
 import {GetAPI} from "@/demo/GetAPI.jsx";
+import {Button} from "@/components/ui/button.jsx";
 function App() {
 
   return (
@@ -9,6 +10,7 @@ function App() {
           <Navbar/>
           <Counter/>
               <GetAPI/>
+
           </div>
       </div>
   )
