@@ -18,7 +18,7 @@ export function GetAPI() {
                         setState(data.message);
                         setLoading(2);
                     });
-            }, 3000);
+            }, 2000);
             return () => clearTimeout(timer);
 
     }
