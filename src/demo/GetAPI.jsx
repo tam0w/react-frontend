@@ -29,11 +29,11 @@ export function GetAPI() {
         }
 
         else if (loading == 0) {
-            return <div className="m-8 flex items-center justify-center"><Button className='' size='lg' onClick={loadData}><h1 className='font text-card-foreground py-4 text-4xl flex items-center justify-center'>Load Data</h1></Button></div>
+            return <div className="flex items-center justify-center"><Button className='' size='lg' onClick={loadData}><h1 className='button-text py-4 flex items-center justify-center'>Load Data</h1></Button></div>
         }
 
        else {
-            return <div className='flex justify-center'><Card className='m-8 w-1/5'><h1 className='font text-card-foreground py-4 text-4xl flex items-center justify-center'>Data: </h1><h1 className='text-secondary-foreground font py-4 text-4xl flex items-center justify-center'>{state}</h1></Card></div>
+            return <div className='flex justify-center'><Card className='w-1/5'><h1 className='button-text py-3 flex items-center justify-center'>Data: {state}</h1></Card></div>
 
             }
         }

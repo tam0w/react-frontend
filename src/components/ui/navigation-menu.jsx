@@ -84,7 +84,7 @@ const NavigationMenuLink = React.forwardRef(({ className, children, ...props }, 
 NavigationMenuLink.displayName = NavigationMenuPrimitive.Link.displayName
 
 const NavigationMenuViewport = React.forwardRef(({ className, ...props }, ref) => (
-  <div className={cn("relative text-card-foreground -left-[7%] -top-2 flex justify-center")}>
+  <div className={cn("relative text-card-foreground -left-[8%] -top-2 flex justify-center")}>
     <NavigationMenuPrimitive.Viewport
       className={cn(
         "origin-top-right absolute text-card-foreground m-10 h-[var(--radix-navigation-menu-viewport-height)] overflow-hidden bg-muted/50 shadow data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-75 data-[state=open]:zoom-in-75 md:w-[var(--radix-navigation-menu-viewport-width)]",

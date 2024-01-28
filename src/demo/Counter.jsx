@@ -17,8 +17,8 @@ export function Counter() {
         <div>
           <div className="flex flex-col justify-center items-center mt-52 text-card-foreground">
               <div className="py-4">
-              <h1 className="normal text-accent-foreground">Counter: </h1>
-              <h1 className="flex justify-center based -mt-2">{count}</h1>
+              <h1 className="big py-4">Counter: </h1>
+              <h1 className=" flex justify-center based">{count}</h1>
               </div>
           </div>
           <div className="flex items-center justify-center">
