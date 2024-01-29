@@ -3,7 +3,7 @@ import {Button} from "@/components/ui/button.jsx";
 import {useEffect, useState} from "react";
 import {CheckIcon, Cross1Icon} from "@radix-ui/react-icons";
 
-const url = 'https://rest-api-t8pa.onrender.com/api/send/'
+const url = 'https://rest-api-t8pa.onrender.com/api/send'
 
 export function PostAPI() {
 
