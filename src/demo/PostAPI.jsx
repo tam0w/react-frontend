@@ -4,6 +4,8 @@ import {useEffect, useState} from "react";
 import {ChatBubbleIcon, CheckIcon, Cross1Icon, FileIcon, InfoCircledIcon, RowsIcon} from "@radix-ui/react-icons";
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card.jsx";
 import {Separator} from "@radix-ui/react-separator";
+import {Toaster} from "@/components/ui/sonner.jsx";
+import {toast} from "sonner";
 
 const url = 'https://rest-api-t8pa.onrender.com/api/send'
 
@@ -57,6 +59,7 @@ export function PostAPI() {
     }
 
 
+
     return (
         <div className='pt-6 justify-center w-screen'>
         <div className='flex justify-center w-screen'>
@@ -65,12 +68,18 @@ export function PostAPI() {
             <Button className='lg:px-10' variant='secondary' size='lg' onClick={sendData} disabled={isButtonDisabled}>
                 <h1 className='sm:font text-card-foreground lg:button-text'>Send Data</h1></Button>
         </div>
-        {isComplete &&
-            <div className='justify-center items-center flex'><CheckIcon className='w-16 h-16 text-green-400/70 py-4'/>
-                <h1 className='font text-2xl text-green-200/90 py-4 -mx-2'>Data sent!</h1></div>}
-        {isnotComplete && <div className='justify-center items-center flex'><Cross1Icon
-            className='w-16 h-16 text-destructive/90 py-4'/> <h1
-            className='font text-2xl text-destructive/60 py-4 -mx-2'>Data failed to send!</h1></div>}
+
+
+
+        {
+            isnotComplete && <div className='justify-center items-center flex'>
+            <Cross1Icon className='w-16 h-16 text-destructive/90 py-4'/>
+                <Toaster> </Toaster>
+            <h1 className='font text-2xl text-destructive/60 py-4 -mx-2'>Data failed to send!</h1>
+                          </div>
+        }
+
+
             <div className='flex justify-center py-6'>
             <Card className='w-2/5'>
               <CardHeader className='mb-0 pb-0'>
@@ -100,5 +109,6 @@ export function PostAPI() {
               </CardFooter>
             </Card>
             </div>
-    </div>)
+    </div>
+    )
 }
