@@ -47,7 +47,7 @@
       --ring: 204 28% 25%;
     }
 
-  h1.based {
+  .based {
     font-family: "Poppins", sans-serif;
     background: linear-gradient(to right, #0ee951, #00dabf);
     -webkit-background-clip: text;
@@ -56,7 +56,7 @@
     font-weight: 500;
   }
 
-  h1.normal {
+  .normal {
     font-family: "Poppins", sans-serif;
     font-size: 36px;
     line-height: 40px;
@@ -64,7 +64,7 @@
     color: hsl(var(--foreground));
   }
 
-  h1.button-text {
+  .button-text {
     font-family: "Poppins", sans-serif;
     font-size: 24px;
     line-height: 40px;
@@ -72,7 +72,7 @@
     color: hsl(var(--foreground));
   }
 
-  h1.big {
+  .big {
     font-family: "Poppins", sans-serif;
     font-size: 60px;
     line-height: 40px;
@@ -134,10 +134,10 @@
   /*  }*/
   .home {
     background-image: url(./assets/base2.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
   }
 }
 

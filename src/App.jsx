@@ -7,7 +7,7 @@ import {PostAPI} from "@/demo/PostAPI.jsx";
 function App() {
 
   return (
-      <div className="dark home h-screen">
+      <div className="dark home min-h-screen h-max">
           <div className="">
               <Navbar/>
               <Counter/>
