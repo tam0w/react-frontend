@@ -69,8 +69,7 @@ export function PostAPI() {
                    value={message} onChange={(e) => setMessage(e.target.value)} disabled={isButtonDisabled}/>
             <Button className='lg:px-10' variant='secondary' size='lg' onClick={sendData} disabled={isButtonDisabled}>
                 <h1 className='sm:font text-card-foreground lg:button-text'>Send Data</h1></Button>
-            <Toaster
-            />
+            <Toaster/>
         </div>
 
 

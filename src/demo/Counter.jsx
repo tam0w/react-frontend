@@ -15,7 +15,7 @@ export function Counter() {
 
     return (
         <div>
-          <div className="flex flex-col justify-center items-center mt-52 text-card-foreground">
+          <div className="flex flex-col justify-center items-center mt-12 text-card-foreground">
               <div className="py-4">
               <h1 className="big py-4">Counter: </h1>
               <h1 className=" flex justify-center based">{count}</h1>
