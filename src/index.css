@@ -84,7 +84,9 @@
     font-family: "Poppins", sans-serif;
   }
 
-
+  .width-cancer {
+   width: 100%;
+  }
 
 
   /*@layer base {*/

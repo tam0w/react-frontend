@@ -63,8 +63,8 @@ export function PostAPI() {
 
 
     return (
-        <div className='pt-6 justify-center w-screen'>
-        <div className='flex justify-center w-screen'>
+        <div className='pt-6 justify-center w-full'>
+        <div className='flex justify-center w-full'>
             <Input className='py-8 mx-4 text-lg lg:w-1/4 sm:1/2' placeholder='Enter your message to POST.'
                    value={message} onChange={(e) => setMessage(e.target.value)} disabled={isButtonDisabled}/>
             <Button className='lg:px-10' variant='secondary' size='lg' onClick={sendData} disabled={isButtonDisabled}>
@@ -89,7 +89,7 @@ export function PostAPI() {
                   <Separator/>
                     {sentMessage.map((msg, index) => (
 
-                        <Card key={index} className='border-accent-foreground/40 w-full my-4 bg-secondary/25 rounded-none hover:bg-secondary-foreground/5'>
+                        <Card key={index} className='border-accent-foreground/40 w-full my-4 bg-muted-foreground/5 rounded-none hover:border-card-foreground/80'>
                                 <CardContent className=''>
                                     <div className='flex'>
                                             <InfoCircledIcon className='w-8 h-8 mt-6 mr-4 text-muted-foreground'/>
