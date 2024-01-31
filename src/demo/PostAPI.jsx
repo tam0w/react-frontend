@@ -23,6 +23,9 @@ export function PostAPI() {
                 setIsButtonDisabled(false)
                 setMessage('')
                 setComplete(false)
+                toast.success('Data has been sent!');
+                setSentMessage(prevMessages => [message, ...prevMessages]) // set isComplete to true immediately after data is sent
+
             }, 1500);
             return () => clearTimeout(timer); // cleanup function
         }
@@ -50,8 +53,7 @@ export function PostAPI() {
             .then(data => {
                 console.log(data)
                 setComplete(true) // set isComplete to true immediately after data is sent
-                setSentMessage(prevMessages => [message, ...prevMessages]) // set isComplete to true immediately after data is sent
-            })
+                })
             .catch((error) => {
                 setnotComplete(true)
                 console.error('Error:', error);
@@ -67,17 +69,10 @@ export function PostAPI() {
                    value={message} onChange={(e) => setMessage(e.target.value)} disabled={isButtonDisabled}/>
             <Button className='lg:px-10' variant='secondary' size='lg' onClick={sendData} disabled={isButtonDisabled}>
                 <h1 className='sm:font text-card-foreground lg:button-text'>Send Data</h1></Button>
+            <Toaster
+            />
         </div>
 
-
-
-        {
-            isnotComplete && <div className='justify-center items-center flex'>
-            <Cross1Icon className='w-16 h-16 text-destructive/90 py-4'/>
-                <Toaster> </Toaster>
-            <h1 className='font text-2xl text-destructive/60 py-4 -mx-2'>Data failed to send!</h1>
-                          </div>
-        }
 
 
             <div className='flex justify-center py-6'>
