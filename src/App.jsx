@@ -13,6 +13,7 @@ function App() {
               <Counter/>
               <Separator/>
               <GetAPI/>
+              {/*must do routes, then navbar*/}
               <PostAPI/>
           </div>
       </div>
