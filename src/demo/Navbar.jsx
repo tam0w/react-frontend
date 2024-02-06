@@ -7,6 +7,7 @@ import {
     NavigationMenuTrigger
 } from "@/components/ui/navigation-menu.jsx";
 import {AvatarIcon, HomeIcon} from "@radix-ui/react-icons";
+import {Link} from "react-router-dom";
 export function Navbar({ logoSrc, onSignOut }) {
 
   return (
@@ -20,7 +21,7 @@ export function Navbar({ logoSrc, onSignOut }) {
                         <HomeIcon className="w-6 h-6 mx-2 my-0.5"/>Home
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                        Dashboard
+                        <Link to="/app">Dashboard</Link>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
                         Pricing
