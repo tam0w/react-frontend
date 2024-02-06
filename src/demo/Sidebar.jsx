@@ -1,16 +1,6 @@
-import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card"
+
 import {Link} from "react-router-dom";
-import {
-  AlignLeftIcon, ArrowLeftIcon,
-  BellIcon, CaretLeftIcon,
-  ChevronLeftIcon, DashboardIcon, DoubleArrowLeftIcon,
-  HamburgerMenuIcon,
-  HomeIcon,
-  SunIcon, ThickArrowLeftIcon,
-  TriangleLeftIcon
-} from "@radix-ui/react-icons";
-import {Separator} from "@radix-ui/react-separator";
-import {useContext} from "react";
+import{BellIcon,  DashboardIcon, DoubleArrowLeftIcon, HamburgerMenuIcon, SunIcon,} from "@radix-ui/react-icons";
 
 export default function Component() {
   return (
