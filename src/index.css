@@ -88,6 +88,12 @@
    width: 100%;
   }
 
+  .active {
+    background-color: hsl(var(--primary) / 0.2);
+    --tw-text-opacity: 1;
+    color: rgb(219 234 254 / var(--tw-text-opacity));
+    border-left-width: 4px;
+  }
 
   /*@layer base {*/
   /*    :root {*/

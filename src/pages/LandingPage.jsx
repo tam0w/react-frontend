@@ -10,7 +10,7 @@ export function LandingPage() {
             <div className="">
                 <Navbar/>
                 <Counter/>
-                <Separator/>
+                <Separator className='my-6'/>
                 <GetAPI/>
                 <PostAPI/>
             </div>
