@@ -38,9 +38,7 @@ export default function Component({children}) {
 export function SidebarItem({icon, text, path}) {
 
   const {expanded} = useContext(SidebarContext)
-  const location = useLocation();
-  const match = useMatch(location.pathname);
-  console.log(match)
+
 
   return (
     <li>

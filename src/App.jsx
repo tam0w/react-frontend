@@ -15,7 +15,7 @@ function App() {
 
       <Route path="/" element={<LandingPage />} />
       <Route path="/app" element={<Appli />}>
-          <Route path="" element={<Summary />} />
+          <Route path="dashboard" element={<Summary />} />
           <Route path="matchreport" element={<MatchReport />} />
           <Route path="maps" element={<MapWise />} />
           <Route path="scrimset" element={<Scrimset />} />

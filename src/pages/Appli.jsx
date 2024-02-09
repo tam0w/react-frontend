@@ -6,7 +6,7 @@ export function Appli() {
     return (
         <div className='dark bg-gray-900/90 home bg-blend-multiply min-w-full min-h-svh flex flex-row'>
             <Sidebar>
-                <SidebarItem text="Dashboard" icon={<DashboardIcon className="h-6 w-6 hover:muted"/>} path={''}/>
+                <SidebarItem text="Dashboard" icon={<DashboardIcon className="h-6 w-6 hover:muted"/>} path={'dashboard'}/>
                 <SidebarItem text="Match" icon={<BellIcon className="h-6 w-6 hover:muted"/>} path={'matchreport'}/>
                 <SidebarItem text="Maps" icon={<SunIcon className="h-6 w-6 hover:muted"/>} path={'maps'}/>
                 <SidebarItem text="Scrims" icon={<HamburgerMenuIcon className="h-6 w-6 hover:muted"/>} path={'scrimset'}/>

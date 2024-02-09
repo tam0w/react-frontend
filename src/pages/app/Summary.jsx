@@ -28,7 +28,7 @@ export function Summary() {
       }
         else {
             return (
-                <div className={`flex flex-row py-4 px-14 space-x-6 duration-500`}>
+                <div className={`flex flex-row space-x-6 duration-500`}>
                     <Card className={'rounded-none rounded-b-md'}>
                         <CardHeader>
                             <CardTitle>User Info</CardTitle>
