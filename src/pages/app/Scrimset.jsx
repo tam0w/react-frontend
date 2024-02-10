@@ -3,10 +3,11 @@ import {useEffect, useState} from "react";
 import {RoundData} from "@/demo/RoundData.jsx";
 import {DoubleArrowLeftIcon} from "@radix-ui/react-icons";
 import {List} from "@radix-ui/react-navigation-menu";
+import {Slider} from "@/components/ui/slider.jsx";
 
 export function Scrimset() {
 
-      const [selectedValue, setSelectedValue] = useState(null);
+      const [selectedValue, setSelectedValue] = useState(4);
       const [data, setData] = useState([]);
       const [isLoading, setIsLoading] = useState(false);
       const [error, setError] = useState(null);
@@ -47,8 +48,7 @@ export function Scrimset() {
         }, []);
 
 
-    var buttonValue = 0;
-
+    const paragraphs = Array.from({length: 23}, (_, i) => <RoundData info={dataObjects} number={i}/>);
 
 
     return (
@@ -58,9 +58,22 @@ export function Scrimset() {
                 <CardHeader>
                     <CardTitle>2D Match Replay:</CardTitle>
                     <CardDescription>Choose the round you would like to see.</CardDescription>
-                </CardHeader>
-                <CardContent className={'text-wrap'}>
+                    <Slider
+                            defaultValue={[selectedValue]}
+                            min={1}
+                            max={23}
+                            step={1}
+                            onValueChange={(value) => {
+                                setSelectedValue(value);
+                            }}
+                            className={'py-2'}/>
+                    <div className={'items-center justify-center flex'}>
+                        <h1 className={'normal flex-row'}>Round {selectedValue}</h1>
+                    </div>
 
+                </CardHeader>
+                <CardContent className={'text-wrap columns-2 '}>
+                    {/*{paragraphs[selectedValue - 1]}*/}
 
                 </CardContent>
             </Card>
