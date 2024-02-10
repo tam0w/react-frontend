@@ -8,9 +8,9 @@ export function Scrimset() {
 
       const [selectedValue, setSelectedValue] = useState(null);
       const [data, setData] = useState([]);
-      const [allRoundData, setallRoundData] = useState([]);
       const [isLoading, setIsLoading] = useState(false);
       const [error, setError] = useState(null);
+      const [dataObjects, setDataObjects] = useState({})
       var url = 'https://rest-api-t8pa.onrender.com/api/match'
 
     useEffect(() => {
@@ -20,10 +20,22 @@ export function Scrimset() {
                 const response = await fetch(url);
                 const data = await response.json();
                 setData(data);
-
-
-                setallRoundData(data.all_round_data);
-
+                // setallRoundData(data.all_round_data);
+                const allRoundData = data.all_round_data;
+                let dataObjects = {};
+                allRoundData.map((round, round_num) => {
+                    dataObjects[round_num+1] = round.map((event, event_num) => {
+                        return {
+                            event_num: event_num+1,
+                            fk: event[0],
+                            fd: event[1],
+                            time: event[2],
+                            team: event[3],
+                            what: event[4]
+                        }
+                    })
+                })
+                setDataObjects(dataObjects);
               } catch (error) {
                 setError(error);
               } finally {
@@ -34,6 +46,8 @@ export function Scrimset() {
 
         }, []);
 
+
+    var buttonValue = 0;
 
 
 
@@ -46,10 +60,6 @@ export function Scrimset() {
                     <CardDescription>Choose the round you would like to see.</CardDescription>
                 </CardHeader>
                 <CardContent className={'text-wrap'}>
-
-                    {allRoundData.map((round, num) => (
-                          <div><RoundData info={round} number={num} /></div>
-                    ))}
 
 
                 </CardContent>
