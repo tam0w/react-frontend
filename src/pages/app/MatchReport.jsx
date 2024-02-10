@@ -26,12 +26,6 @@ export function MatchReport() {
 
     }, []);
 
-    function getData() {
-        if (data) {
-            return data.anchor_times.map(time => <p>{time}</p>)
-
-    }
-        }
 
 
     return (
@@ -43,7 +37,7 @@ export function MatchReport() {
                             <CardDescription>Basic User Data:</CardDescription>
                         </CardHeader>
                         <CardContent>
-                            <p>{getData()}</p>
+                            <pre className={'text-wrap'}>{data ? JSON.stringify(data, null, 2) : "Loading..."}</pre>
                         </CardContent>
                     </Card>
         </div>
