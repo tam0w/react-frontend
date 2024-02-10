@@ -1,10 +1,14 @@
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card.jsx";
 import {useEffect, useState} from "react";
+import {RoundData} from "@/demo/RoundData.jsx";
+import {DoubleArrowLeftIcon} from "@radix-ui/react-icons";
+import {List} from "@radix-ui/react-navigation-menu";
 
 export function Scrimset() {
 
       const [selectedValue, setSelectedValue] = useState(null);
       const [data, setData] = useState([]);
+      const [allRoundData, setallRoundData] = useState([]);
       const [isLoading, setIsLoading] = useState(false);
       const [error, setError] = useState(null);
       var url = 'https://rest-api-t8pa.onrender.com/api/match'
@@ -16,6 +20,10 @@ export function Scrimset() {
                 const response = await fetch(url);
                 const data = await response.json();
                 setData(data);
+
+
+                setallRoundData(data.all_round_data);
+
               } catch (error) {
                 setError(error);
               } finally {
@@ -37,9 +45,13 @@ export function Scrimset() {
                     <CardTitle>2D Match Replay:</CardTitle>
                     <CardDescription>Choose the round you would like to see.</CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className={'text-wrap'}>
 
-                    <RoundData />
+                    {allRoundData.map((round, num) => (
+                          <div><RoundData info={round} number={num} /></div>
+                    ))}
+
+
                 </CardContent>
             </Card>
         </div>
