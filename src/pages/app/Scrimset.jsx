@@ -72,8 +72,8 @@ export function Scrimset() {
                     </div>
 
                 </CardHeader>
-                <CardContent className={'text-wrap columns-2 '}>
-                    {/*{paragraphs[selectedValue - 1]}*/}
+                <CardContent className={'text-wrap columns-2'}>
+                    {dataObjects[selectedValue] ? <RoundData info={dataObjects} number={selectedValue}/> : "Loading..."}
 
                 </CardContent>
             </Card>
