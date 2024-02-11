@@ -1,9 +1,10 @@
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card.jsx";
 import {useEffect, useState} from "react";
 import {RoundData} from "@/demo/RoundData.jsx";
-import {DoubleArrowLeftIcon} from "@radix-ui/react-icons";
+import {ChevronLeftIcon, ChevronRightIcon, DoubleArrowLeftIcon} from "@radix-ui/react-icons";
 import {List} from "@radix-ui/react-navigation-menu";
 import {Slider} from "@/components/ui/slider.jsx";
+import {Button} from "@/components/ui/button.jsx";
 
 export function Scrimset() {
 
@@ -54,25 +55,26 @@ export function Scrimset() {
     return (
         <div className={'flex flex-row space-x-6 duration-1000 py-4 px-14'}>
 
-            <Card className={'rounded-none rounded-b-md'}>
-                <CardHeader>
+            <Card className={'rounded-none rounded-b-md pb-2 px-4'}>
+                <CardHeader className={'pb-2 mb-0'}>
                     <CardTitle>2D Match Replay:</CardTitle>
                     <CardDescription>Choose the round you would like to see.</CardDescription>
                     <Slider
                             defaultValue={[selectedValue]}
                             min={1}
-                            max={23}
+                            max={24}
                             step={1}
                             onValueChange={(value) => {
-                                setSelectedValue(value);
+                                setSelectedValue(parseInt(value));
                             }}
+                            value={[selectedValue]}
                             className={'py-2'}/>
-                    <div className={'items-center justify-center flex'}>
-                        <h1 className={'normal flex-row'}>Round {selectedValue}</h1>
+                    <div className={'items-center justify-center flex space-x-9'}>
+                       <Button className={'p-2'} onClick={() => {if (selectedValue > 1) setSelectedValue(selectedValue-1)}}><ChevronLeftIcon className={'h-5 w-5'}/></Button><h1 className={'normal flex-row'}>Round {selectedValue}</h1><Button className={'p-2'} onClick={() => {if (selectedValue < 24) setSelectedValue(selectedValue+1)}}><ChevronRightIcon className={'h-5 w-5'}/></Button>
                     </div>
 
                 </CardHeader>
-                <CardContent className={'text-wrap columns-2'}>
+                <CardContent className={'text-wrap space-y-2'}>
                     {dataObjects[selectedValue] ? <RoundData info={dataObjects} number={selectedValue}/> : "Loading..."}
 
                 </CardContent>
