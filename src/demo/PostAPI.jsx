@@ -84,15 +84,15 @@ export function PostAPI() {
 
                 <CardDescription><p>All the messages you've sent:</p></CardDescription>
               </CardHeader>
-              <CardContent className='mb-0 pb-0'>
+              <CardContent className='m-4'>
                   <Separator/>
                     {sentMessage.map((msg, index) => (
 
-                        <Card key={index} className='border-accent-foreground/40 w-full my-4 bg-muted-foreground/5 rounded-none hover:border-card-foreground/80'>
+                        <Card key={index} className='my-4 border-accent-foreground/40 w-full bg-muted-foreground/5 rounded-none hover:border-card-foreground/80'>
                                 <CardContent className=''>
                                     <div className='flex'>
-                                            <InfoCircledIcon className='w-8 h-8 mt-6 mr-4 text-muted-foreground'/>
-                                            <h1 className='normal items-center mt-5'>{msg}</h1>
+                                            <InfoCircledIcon className='w-8 h-8 m-4 text-muted-foreground'/>
+                                            <h1 className='normal items-center my-2'>{msg}</h1>
                                     </div>
                                 </CardContent>
                         </Card>
