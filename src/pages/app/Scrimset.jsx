@@ -64,9 +64,7 @@ export function Scrimset() {
                             min={1}
                             max={24}
                             step={1}
-                            onValueChange={(value) => {
-                                setSelectedValue(parseInt(value));
-                            }}
+                            onValueChange={(value) => {setSelectedValue(parseInt(value));}}
                             value={[selectedValue]}
                             className={'py-2'}/>
                     <div className={'items-center justify-center flex space-x-9'}>
