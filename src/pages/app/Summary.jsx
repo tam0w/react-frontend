@@ -14,6 +14,8 @@ import {
     PolarGrid, PolarAngleAxis, Legend, Cross, ReferenceLine, LabelList
 } from 'recharts';
 import {Button} from "@/components/ui/button.jsx";
+import {CalendarIcon, CountdownTimerIcon, LapTimerIcon, TimerIcon} from "@radix-ui/react-icons";
+import {Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table.jsx";
 
 const mapwise_playdata = [{map: 'split', total_scrims: 18, rounds: 18*24, round_wins:14*18, round_losses: 18*10},
     {map: 'icebox', total_scrims: 12, rounds: 12*24, round_wins:14*12, round_losses: 12*10},
@@ -56,35 +58,18 @@ export function Summary() {
 
     return (<div className={'flex flex-row space-x-6 duration-1000 py-4 px-14'}>
 
-        <Card className={'rounded-none rounded-b-md'}>
-            <CardHeader className={'pb-0 mb-0'}>
-                <CardTitle>Performance Trends</CardTitle>
-                <CardDescription><p className='text-wrap break-words'>Trends of various performance metrics in the
-                    time-frame.</p></CardDescription>
-            </CardHeader>
-            <CardContent className={'items-center justify-center flex p-4 m-0'}>
-                <LineChart width={800} height={350} data={performance_indicators} stroke="#f3f3f3">
-                    <XAxis dataKey={'day'} stroke="#fcfdfd" tickLine={false} type={'category'} interval={0}
-                           tickMargin={10}/>
-                    <Line strokeWidth={2} dataKey={'fbpr'} stroke='#a377d4' dot={false}/>
-                    <Line strokeWidth={2} dataKey={'kd'} stroke='#6fc894' dot={false}/>
-                    <Line strokeWidth={2} dataKey={'kast'} stroke='#d36fa7' dot={false}/>
-                    <ReferenceLine y={1} stroke="#ffffff" strokeOpacity={0.8} strokeDasharray={18}/>
 
-                    <Legend verticalAlign={'top'}/>
-                    <Tooltip content={<LineTooltip/>}/>
-                </LineChart>
-            </CardContent>
-        </Card>
-        <div className={'flex flex-col text-center gap-4'}>
-            <div className={'text-primary-foreground space-y-1 font-semibold'}>
-            <p>Data Timeframe:</p>
+        <div className={'flex flex-col text-center gap-2'}>
+            <div className={'border border-ring text-card-foreground space-y-1 font-semibold'}>
+                <LapTimerIcon className={'h-6 w-6 inline mt-3'}> </LapTimerIcon>
 
-            <div className={'flex-row w-full justify-stretch'}>
-            <Button className={'rounded-none'}>Days</Button>
-            <Button className={'rounded-none'}>Month</Button>
-            <Button className={'rounded-none'}>Seasonal</Button>
-            </div>
+                <div className={'flex flex-row w-full justify-stretch pt-2'}>
+                    <Button
+                        className={'bg-card/5 w-full border-primary border-r-0 rounded-none rounded-l-sm text-md pt-1'}>Days</Button>
+                    <Button className={'bg-card/5 w-full border-primary rounded-none text-md pt-1'}>Month</Button>
+                    <Button
+                        className={'bg-card/5 w-full border-l-0 border-primary rounded-none rounded-r-sm text-md pt-1'}>Seasonal</Button>
+                </div>
             </div>
             <Card className={'rounded-none rounded-b-md'}>
                 <CardHeader className={'pb-0 mb-0'}>
@@ -103,9 +88,49 @@ export function Summary() {
                     </RadarChart>
                 </CardContent>
             </Card>
-    </div>
+        </div>
 
-</div>)
+
+        <Card className={'rounded-none rounded-b-md'}>
+            <CardHeader className={'pb-0 mb-0'}>
+                <CardTitle>Performance Trends</CardTitle>
+                <CardDescription><p className='text-wrap break-words'>Trends of various performance metrics in the
+                    time-frame.</p></CardDescription>
+            </CardHeader>
+            <CardContent className={'items-center justify-center flex p-4 m-0'}>
+                <LineChart width={800} height={365} data={performance_indicators} stroke="#f3f3f3">
+                    <XAxis dataKey={'day'} stroke="#fcfdfd" tickLine={false} type={'category'} interval={0} tickMargin={10}/>
+                    <Line strokeWidth={2} dataKey={'fbpr'} stroke='#a377d4' dot={false} />
+                    <Line strokeWidth={2} dataKey={'kd'} stroke='#6fc894' dot={false} />
+                    <Line strokeWidth={2} dataKey={'kast'} stroke='#d36fa7' dot={false}/>
+                    <ReferenceLine y={1} stroke="#ffffff" strokeOpacity={0.8} strokeDasharray={18}/>
+
+                    <Legend verticalAlign={'top'}/>
+                    <Tooltip content={<LineTooltip/>}/>
+                </LineChart>
+            </CardContent>
+        </Card>
+
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="w-[100px]">No.</TableHead>
+              <TableHead>Agent</TableHead>
+              <TableHead>Win Rate</TableHead>
+              <TableHead className="text-right">Times Played</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell className="font-medium">01</TableCell>
+              <TableCell>Jett</TableCell>
+              <TableCell>65.7%</TableCell>
+              <TableCell className="text-right">67</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+
+    </div>)
 }
 
 const CustomTooltip = ({active, payload, label}) => {
@@ -127,14 +152,17 @@ const LineTooltip = ({active, payload, label}) => {
         console.log(payload)
         return (
             <div className="bg-muted/80 border border-ring rounded-md p-2">
-                <p className={'button-text font based font-semibold text-center'}>{label}</p>
-                <p className="font">KD / round: <span className={' font  based text-lg '}>{payload[1].value}</span> </p>
-                <p className="font ">Avg KAST: <span className={' font based  text-lg'}>{payload[2].value*100}%</span> </p>
-                <p className="font ">FBs / round: <span className={' based  font text-lg'}>{payload[0].value}</span> </p>
+                <p className={'button-text font font-semibold text-center'}>{label}</p>
+                <p className="font">KD / round: <span
+                    className={'font based text-lg font-bold'}>{payload[1].value}</span></p>
+                <p className="font ">Avg KAST: <span
+                    className={'font based  text-lg font-bold'}>{payload[2].value * 100}%</span></p>
+                <p className="font ">FBs / round: <span
+                    className={'font based text-lg font-bold'}>{payload[0].value}</span></p>
 
-      </div>
-    );
-  }
+            </div>
+        );
+    }
 
-  return null;
+    return null;
 };
