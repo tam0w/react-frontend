@@ -1,6 +1,7 @@
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card.jsx";
 import {useEffect, useState} from "react";
 import {ButtonSpin} from "@/demo/ButtonSpin.jsx";
+import _ from 'lodash';
 import {
     LineChart,
     Line,
@@ -34,6 +35,8 @@ const performance_indicators = [
     {kd: 1.11, kast: 0.78, fbpr: 0.94, day: 'Saturday'},
     {kd: 1.41, kast: 0.89, fbpr: 0.99, day: 'Sunday'}
     ]
+
+const agent_data = [['Jett', 0.777, 67], ['Raze', 0.651, 52], ['Sova', 0.346, 45], ['Breach', 0.347, 42], ['Omen', 0.697, 41]]
 
 
 export function Summary() {
@@ -121,12 +124,17 @@ export function Summary() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow>
-              <TableCell className="font-medium">01</TableCell>
-              <TableCell>Jett</TableCell>
-              <TableCell>65.7%</TableCell>
-              <TableCell className="text-right">67</TableCell>
-            </TableRow>
+
+                {
+                    agent_data.map((info, index) => {
+                    return (<TableRow>
+                        <TableCell>{index+1}</TableCell>
+                        <TableCell>{info[0]}</TableCell><TableCell className={'text-right'}>{_.round(info[1]*100, 3)}%</TableCell>
+                        <TableCell className={'text-right'}>{info[2]}</TableCell>
+                            </TableRow>)
+                }
+                    )}
+
           </TableBody>
         </Table>
 
