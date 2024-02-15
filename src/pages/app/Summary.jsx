@@ -159,7 +159,9 @@ export function Summary() {
                         performanceData.map((info, index) => {
                             if (index+1 < 10)
                                 return (<TableRow>
-                                    <TableCell className={'text-left'}>{index + 1}</TableCell>
+                                    <TableCell className={'text-left'}>
+                                        {sortState === 'high' ? index+1 : performanceData.length - index}
+                                    </TableCell>
                                     <TableCell className={'w-32 text-left'}>{info[0]}</TableCell><TableCell
                                     className={'text-center'}>{_.round(info[1] * 100, 3)}%</TableCell>
                                     <TableCell className={'text-right'}>{info[2]}</TableCell>
