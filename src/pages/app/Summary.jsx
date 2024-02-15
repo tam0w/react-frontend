@@ -15,7 +15,14 @@ import {
     PolarGrid, PolarAngleAxis, Legend, Cross, ReferenceLine, LabelList
 } from 'recharts';
 import {Button} from "@/components/ui/button.jsx";
-import {CalendarIcon, CountdownTimerIcon, LapTimerIcon, TimerIcon} from "@radix-ui/react-icons";
+import {
+    ArrowDownIcon,
+    ArrowUpIcon,
+    CalendarIcon,
+    CountdownTimerIcon, EnvelopeOpenIcon, EyeOpenIcon,
+    LapTimerIcon, OpenInNewWindowIcon, PlusIcon, TableIcon,
+    TimerIcon
+} from "@radix-ui/react-icons";
 import {Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table.jsx";
 
 const mapwise_playdata = [{map: 'split', total_scrims: 18, rounds: 18*24, round_wins:14*18, round_losses: 18*10},
@@ -37,6 +44,7 @@ const performance_indicators = [
     ]
 
 const agent_data = [['Jett', 0.777, 67], ['Raze', 0.651, 52], ['Sova', 0.346, 45], ['Breach', 0.347, 42], ['Omen', 0.697, 41]]
+const agent_data_low = [['Iso', 0.2377, 67], ['Deadlock', 0.345, 52], ['Skye', 0.376, 45], ['Yoru', 0.447, 42], ['Omen', 0.697, 41]]
 
 
 export function Summary() {
@@ -44,6 +52,7 @@ export function Summary() {
     // let url = 'https://rest-api-t8pa.onrender.com/api/match'
     // const [data, setData] = useState();
     const [Loading, setLoading] = useState()
+    const [performanceData, setPerformanceData] = useState(agent_data);
 
 
     // useEffect(() => {
@@ -59,85 +68,101 @@ export function Summary() {
     // }, []);
 
 
-    return (<div className={'flex flex-row space-x-6 duration-1000 py-4 px-14'}>
+    return (<div className={'flex flex-col'}>
+        <div className={'flex flex-row space-x-6 duration-1000 py-4 px-14'}>
 
 
-        <div className={'flex flex-col text-center gap-2'}>
-            <div className={'border border-ring text-card-foreground space-y-1 font-semibold'}>
-                <LapTimerIcon className={'h-6 w-6 inline mt-3'}> </LapTimerIcon>
+            <div className={'flex flex-col text-center gap-2'}>
+                <div className={'border border-ring text-card-foreground space-y-1 font-semibold'}>
+                    <LapTimerIcon className={'h-6 w-6 inline mt-3'}> </LapTimerIcon>
 
-                <div className={'flex flex-row w-full justify-stretch pt-2'}>
-                    <Button
-                        className={'bg-card/5 w-full border-primary border-r-0 rounded-none rounded-l-sm text-md pt-1'}>Days</Button>
-                    <Button className={'bg-card/5 w-full border-primary rounded-none text-md pt-1'}>Month</Button>
-                    <Button
-                        className={'bg-card/5 w-full border-l-0 border-primary rounded-none rounded-r-sm text-md pt-1'}>Seasonal</Button>
+                    <div className={'flex flex-row w-full justify-stretch pt-2'}>
+                        <Button
+                            className={'bg-card/5 w-full border-primary border-r-0 rounded-none rounded-l-sm text-md pt-1'}>Days</Button>
+                        <Button className={'bg-card/5 w-full border-primary rounded-none text-md pt-1'}>Month</Button>
+                        <Button
+                            className={'bg-card/5 w-full border-l-0 border-primary rounded-none rounded-r-sm text-md pt-1'}>Seasonal</Button>
+                    </div>
                 </div>
+                <Card className={'rounded-none rounded-b-md'}>
+                    <CardHeader className={'pb-0 mb-0'}>
+                        <CardTitle>Scrims Played</CardTitle>
+                        <CardDescription><p className='text-wrap break-words'>Mapwise breakdown of practice
+                            matches <br/>played.
+                        </p></CardDescription>
+                    </CardHeader>
+                    <CardContent className={'p-4 mt-0 pt-0'}>
+                        <RadarChart outerRadius={90} width={290} height={250} data={mapwise_playdata}>
+                            <PolarGrid/>
+                            <PolarAngleAxis dataKey="map" stroke="#f3f3f3"/>
+                            <Radar name="Rounds Played" dataKey="rounds" stroke="#8884d8" fill="#8884d8"
+                                   fillOpacity={0.3}/>
+                            <Radar name="Rounds Won" dataKey="round_wins" stroke="#82ca9d" fill="#82ca9d"
+                                   fillOpacity={1}/>
+                            <Tooltip offset={120} content={<CustomTooltip/>}/>
+                            <Legend height={15}/>
+                        </RadarChart>
+                    </CardContent>
+                </Card>
             </div>
+
+
             <Card className={'rounded-none rounded-b-md'}>
                 <CardHeader className={'pb-0 mb-0'}>
-                    <CardTitle>Scrims Played</CardTitle>
-                    <CardDescription><p className='text-wrap break-words'>Mapwise breakdown of practice matches <br/>played.
-                    </p></CardDescription>
+                    <CardTitle>Performance Trends</CardTitle>
+                    <CardDescription><p className='text-wrap break-words'>Trends of various performance metrics in the
+                        time-frame.</p></CardDescription>
                 </CardHeader>
-                <CardContent className={'p-4 mt-0 pt-0'}>
-                    <RadarChart outerRadius={90} width={290} height={250} data={mapwise_playdata}>
-                        <PolarGrid/>
-                        <PolarAngleAxis dataKey="map" stroke="#f3f3f3"/>
-                        <Radar name="Rounds Played" dataKey="rounds" stroke="#8884d8" fill="#8884d8" fillOpacity={0.3}/>
-                        <Radar name="Rounds Won" dataKey="round_wins" stroke="#82ca9d" fill="#82ca9d" fillOpacity={1}/>
-                        <Tooltip offset={120} content={<CustomTooltip/>}/>
-                        <Legend height={15}/>
-                    </RadarChart>
+                <CardContent className={'items-center justify-center flex p-4 m-0'}>
+                    <LineChart width={800} height={365} data={performance_indicators} stroke="#f3f3f3" >
+                        <XAxis dataKey={'day'} stroke="#fcfdfd" tickLine={false} type={'category'} tickMargin={10} interval={"preserveStartEnd"}/>
+                        <Line strokeWidth={2} dataKey={'fbpr'} stroke='#a377d4' dot={false} />
+                        <Line strokeWidth={2} dataKey={'kd'} stroke='#6fc894' dot={false}/>
+                        <Line strokeWidth={2} dataKey={'kast'} stroke='#d36fa7' dot={false}/>
+                        <ReferenceLine y={1} stroke="#ffffff" strokeOpacity={0.8} strokeDasharray={18}/>
+
+                        <Legend verticalAlign={'top'}/>
+                        <Tooltip content={<LineTooltip/>}/>
+                    </LineChart>
                 </CardContent>
             </Card>
+            <div className={'flex flex-col text-center'}>
+            <Table className={'border-b-0'}>
+                <TableHeader>
+                    <TableRow>
+                        <TableHead className="w-[100px]">No.</TableHead>
+                        <TableHead>Agent</TableHead>
+                        <TableHead>Win Rate</TableHead>
+                        <TableHead className="text-right">Times Played</TableHead>
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+
+                    {
+                        performanceData.map((info, index) => {
+                            if (index+1 < 8)
+                                return (<TableRow>
+                                    <TableCell className={'text-left'}>{index + 1}</TableCell>
+                                    <TableCell className={'w-32 text-left'}>{info[0]}</TableCell><TableCell
+                                    className={'text-center'}>{_.round(info[1] * 100, 3)}%</TableCell>
+                                    <TableCell className={'text-right'}>{info[2]}</TableCell>
+                                </TableRow>)
+                            }
+                        )}
+
+                </TableBody>
+
+            </Table>
+            <div className={'flex border border-ring items-center justify-center text-center font-semibold'}>
+                <Button onClick={() => setPerformanceData(agent_data)} variant={'ghost'} className={'w-full rounded-none rounded-l-sm'}>Best<ArrowUpIcon></ArrowUpIcon></Button>
+                <Button onClick={() => setPerformanceData(agent_data_low)} variant={'ghost'} className={'w-full rounded-none rounded-r-sm'}>Low<ArrowDownIcon></ArrowDownIcon></Button>
+                <Button variant={'ghost'} className={'w-full rounded-none'}>View All <OpenInNewWindowIcon className={'mx-1'}/></Button>
+            </div>
+            </div>
+
         </div>
-
-
-        <Card className={'rounded-none rounded-b-md'}>
-            <CardHeader className={'pb-0 mb-0'}>
-                <CardTitle>Performance Trends</CardTitle>
-                <CardDescription><p className='text-wrap break-words'>Trends of various performance metrics in the
-                    time-frame.</p></CardDescription>
-            </CardHeader>
-            <CardContent className={'items-center justify-center flex p-4 m-0'}>
-                <LineChart width={800} height={365} data={performance_indicators} stroke="#f3f3f3">
-                    <XAxis dataKey={'day'} stroke="#fcfdfd" tickLine={false} type={'category'} interval={0} tickMargin={10}/>
-                    <Line strokeWidth={2} dataKey={'fbpr'} stroke='#a377d4' dot={false} />
-                    <Line strokeWidth={2} dataKey={'kd'} stroke='#6fc894' dot={false} />
-                    <Line strokeWidth={2} dataKey={'kast'} stroke='#d36fa7' dot={false}/>
-                    <ReferenceLine y={1} stroke="#ffffff" strokeOpacity={0.8} strokeDasharray={18}/>
-
-                    <Legend verticalAlign={'top'}/>
-                    <Tooltip content={<LineTooltip/>}/>
-                </LineChart>
-            </CardContent>
-        </Card>
-
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="w-[100px]">No.</TableHead>
-              <TableHead>Agent</TableHead>
-              <TableHead>Win Rate</TableHead>
-              <TableHead className="text-right">Times Played</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-
-                {
-                    agent_data.map((info, index) => {
-                    return (<TableRow>
-                        <TableCell>{index+1}</TableCell>
-                        <TableCell>{info[0]}</TableCell><TableCell className={'text-right'}>{_.round(info[1]*100, 3)}%</TableCell>
-                        <TableCell className={'text-right'}>{info[2]}</TableCell>
-                            </TableRow>)
-                }
-                    )}
-
-          </TableBody>
-        </Table>
-
+        <div className={'flex flex-row space-x-6 duration-1000 py-4 px-14'}>
+        </div>
     </div>)
 }
 
