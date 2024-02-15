@@ -14,36 +14,58 @@ export default function Component({children}) {
 
   return (<>
       <div className={`flex min-h-screen`}>
-          <aside className={`${expanded ? "w-72" : "w-20"} bg-muted/50 font text-2xl text-card-foreground border-r-2 border-muted-foreground`}>
+          <aside
+              className={`${expanded ? "w-72" : "w-20"} bg-muted/50 font text-2xl text-card-foreground border-r-2 border-muted-foreground`}>
               <div className={`h-24 flex items-center space-x-2 justify-center border-muted-foreground`}>
-                  {expanded ? <img src={img1} className={`h-12 overflow-hidden transition-all`}></img> : <img src={img2} className={`h-12 overflow-hidden transition-all`}></img>}
+                  {expanded ? <img src={img1} className={`h-12 overflow-hidden transition-all`}></img> :
+                      <img src={img2} className={`h-12 overflow-hidden transition-all`}></img>}
 
               </div>
               <ul>
 
                   <SidebarContext.Provider value={{expanded}}>
-                  {children}
+                      {children}
                   </SidebarContext.Provider>
               </ul>
               <Separator className={'bg-muted-foreground'}/>
               <button className='py-6' onClick={() => setExpanded((curr) => !curr)}>
-                  {expanded ? <DoubleArrowLeftIcon className='h-6 w-6 hover:muted ml-6'/> :<DoubleArrowRightIcon className="h-6 w-6 hover:muted ml-6"/>}
+                  {expanded ? <DoubleArrowLeftIcon className='h-6 w-6 hover:muted ml-6'/> :
+                      <DoubleArrowRightIcon className="h-6 w-6 hover:muted ml-6"/>}
               </button>
+              <div className={`flex flex-col justify-center justify-between border-muted-foreground`}>
+
+                  <div className={`flex flex-col gap-y-4 ${expanded ? "" : ""}`}>
+                      <Separator className={'bg-muted-foreground'}/>
+                      <div className={`flex items-center cursor-pointer p-2
+      transition-colors group`}>
+         <img src={'https://ui-avatars.com/api/?name=Tamim&bold=true&color=ffffff&background=342334'} className={'border-2 border-card-foreground opacity-70 rounded-md ml-1 h-14 w-14'}/>
+         <div className={`flex flex-col`}><span className={`text-muted-foreground overflow-hidden break-words text-sm transition-all ${expanded ? "w-52 ml-3" : "hidden"}`}>
+        Tamim Muhammed <br/>
+             work.tamimmuhammed@gmail.com
+         </span>
+         </div>
+                          {/*<img src={'https://ui-avatars.com/api/?name=Tamim&background=060b10&bold=true&color=ffffff'}*/}
+                          {/*     className={`h-14 w-14 overflow-hidden border rounded-xl my-0 py-0 border-ring ${expanded ? "" : ""}`}/>*/}
+                          {/*<h1 className={`font text-md text-accent-foreground overflow-hidden ${expanded ? "w-72" : "w-0"}`}>Tamim Muhammed</h1>*/}
+                          {/*<p className={`text-foreground text-sm overflow-hidden ${expanded ? "w-72" : "w-0"}`}>work.tamimmuhammed@gmail.com</p>*/}
+                      </div>
+                  </div>
+              </div>
           </aside>
 
       </div>
-    {/*{expanded ? <div className={'bg-destructive/70'}></div> : ""}*/}
-</>)
+      {/*{expanded ? <div className={'bg-destructive/70'}></div> : ""}*/}
+  </>)
 }
 
 export function SidebarItem({icon, text, path}) {
 
-  const {expanded} = useContext(SidebarContext)
+    const {expanded} = useContext(SidebarContext)
 
 
-  return (
-    <li>
-      <NavLink to={path} className={`flex items-center cursor-pointer p-6
+    return (
+        <li>
+            <NavLink to={path} className={`flex items-center cursor-pointer p-6
       transition-colors group hover:bg-primary/20 hover:text-blue-100 hover:border-l-4 
             `}>
         {icon}
