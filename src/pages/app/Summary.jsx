@@ -43,8 +43,11 @@ const performance_indicators = [
     {kd: 1.41, kast: 0.89, fbpr: 0.99, day: 'Sunday'}
     ]
 
-const agent_data = [['Jett', 0.777, 67], ['Raze', 0.651, 52], ['Sova', 0.346, 45], ['Breach', 0.347, 42], ['Omen', 0.697, 41]]
-const agent_data_low = [['Iso', 0.2377, 67], ['Deadlock', 0.345, 52], ['Skye', 0.376, 45], ['Yoru', 0.447, 42], ['Omen', 0.697, 41]]
+const agent_data = [['Jett', 0.747, 67], ['Raze', 0.651, 52], ['Sova', 0.346, 45], ['Breach', 0.347, 42],
+    ['Omen', 0.697, 41], ['Iso', 0.2377, 67], ['Deadlock', 0.345, 52], ['Skye', 0.376, 45], ['Yoru', 0.447, 42],
+    ['Reyna', 0.757, 62], ['Gekko', 0.651, 12], ['Sova', 0.346, 45], ['Breach', 0.347, 42],
+    ['Killjoy', 0.697, 41], ['Cypher', 0.2377, 67], ['Sage', 0.345, 52], ['Brimstone', 0.376, 45],
+    ["Astra", 0.697, 41], ['Viper', 0.2377, 67], ['Fade', 0.345, 52], ['Phoenix', 0.376, 45], ['Harbour', 0.447, 42]]
 
 
 export function Summary() {
@@ -52,7 +55,21 @@ export function Summary() {
     // let url = 'https://rest-api-t8pa.onrender.com/api/match'
     // const [data, setData] = useState();
     const [Loading, setLoading] = useState()
-    const [performanceData, setPerformanceData] = useState(agent_data);
+    const [sortState, setSortState] = useState('high');
+    const [performanceData, setPerformanceData] = useState(sortData(agent_data, sortState));
+
+    function sortData(data, sortState) {
+        if (sortState === 'high') {
+            return data.sort((a, b) => b[1] - a[1]); // For descending order
+        }
+        else {
+            return data.sort((a, b) => a[1] - b[1]); // For ascending order
+        }
+    }
+
+    // setPerformanceData(sortData(agent_data, sortState));
+
+
 
 
     // useEffect(() => {
@@ -140,7 +157,7 @@ export function Summary() {
 
                     {
                         performanceData.map((info, index) => {
-                            if (index+1 < 8)
+                            if (index+1 < 10)
                                 return (<TableRow>
                                     <TableCell className={'text-left'}>{index + 1}</TableCell>
                                     <TableCell className={'w-32 text-left'}>{info[0]}</TableCell><TableCell
@@ -154,8 +171,8 @@ export function Summary() {
 
             </Table>
             <div className={'flex border border-ring items-center justify-center text-center font-semibold'}>
-                <Button onClick={() => setPerformanceData(agent_data)} variant={'ghost'} className={'w-full rounded-none rounded-l-sm'}>Best<ArrowUpIcon></ArrowUpIcon></Button>
-                <Button onClick={() => setPerformanceData(agent_data_low)} variant={'ghost'} className={'w-full rounded-none rounded-r-sm'}>Low<ArrowDownIcon></ArrowDownIcon></Button>
+                <Button onClick={() => setSortState('high')} variant={'ghost'} className={'w-full rounded-none rounded-l-sm'}>Best<ArrowUpIcon></ArrowUpIcon></Button>
+                <Button onClick={() => setSortState('low')} variant={'ghost'} className={'w-full rounded-none rounded-r-sm'}>Low<ArrowDownIcon></ArrowDownIcon></Button>
                 <Button variant={'ghost'} className={'w-full rounded-none'}>View All <OpenInNewWindowIcon className={'mx-1'}/></Button>
             </div>
             </div>
