@@ -35,12 +35,12 @@ export default function Component({children}) {
               <div className={`flex flex-col justify-center justify-between border-muted-foreground`}>
 
                   <div className={`flex flex-col gap-y-4 ${expanded ? "" : ""}`}>
-                      <Separator className={'bg-muted-foreground'}/>
+                      {/*<Separator className={'bg-muted-foreground'}/>*/}
                       <div className={`flex items-center cursor-pointer p-2
       transition-colors group`}>
          <img src={'https://ui-avatars.com/api/?name=Tamim&bold=true&color=ffffff&background=342334'} className={'border-2 border-card-foreground opacity-70 rounded-md ml-1 h-14 w-14'}/>
          <div className={`flex flex-col`}><span className={`text-muted-foreground overflow-hidden break-words text-sm transition-all ${expanded ? "w-52 ml-3" : "hidden"}`}>
-        Tamim Muhammed <br/>
+             <span className={'text-card-foreground text-lg'}>Tamim Muhammed</span> <br/>
              work.tamimmuhammed@gmail.com
          </span>
          </div>
