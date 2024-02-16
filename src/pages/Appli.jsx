@@ -11,8 +11,9 @@ export function Appli() {
                 <SidebarItem text="Maps" icon={<SunIcon className="h-6 w-6 hover:muted"/>} path={'maps'}/>
                 <SidebarItem text="Scrims" icon={<HamburgerMenuIcon className="h-6 w-6 hover:muted"/>} path={'scrimset'}/>
             </Sidebar>
+            {console.log("test"+Sidebar.context)}
+            {/*{Sidebar.expanded ? <Outlet /> : <div className="flex-1 flex flex-col items-center justify-center text-white">Select a page</div>}*/}
             <Outlet />
-
         </div>
     )
 }

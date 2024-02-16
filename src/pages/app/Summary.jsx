@@ -12,7 +12,7 @@ import {
     RadarChart,
     Radar,
     PolarRadiusAxis,
-    PolarGrid, PolarAngleAxis, Legend, Cross, ReferenceLine, LabelList
+    PolarGrid, PolarAngleAxis, Legend, Cross, ReferenceLine, LabelList, Label
 } from 'recharts';
 import {Button} from "@/components/ui/button.jsx";
 import {
@@ -24,6 +24,8 @@ import {
     TimerIcon
 } from "@radix-ui/react-icons";
 import {Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table.jsx";
+import {Dialog, DialogFooter, DialogHeader, DialogTitle, DialogDescription, DialogTrigger, DialogContent, DialogClose, DialogOverlay , DialogPortal} from "@/components/ui/dialog.jsx";
+import {Input} from "postcss";
 
 const mapwise_playdata = [{map: 'split', total_scrims: 18, rounds: 18*24, round_wins:14*18, round_losses: 18*10},
     {map: 'icebox', total_scrims: 12, rounds: 12*24, round_wins:14*12, round_losses: 12*10},
@@ -196,49 +198,101 @@ export function Summary() {
                 </CardHeader>
                 <div className={'flex flex-row space-x-4 mx-4 mb-3'}>
                 <CardContent className={'items-center justify-center flex gap-4 mx-0 mt-0 flex-col'}>
-                    <Card className={'w-[25rem] border-muted-foreground/80 rounded-none hover:bg-muted-foreground/5'}>
+                    <Card className={'w-[19rem] border-muted-foreground/80 rounded-none hover:bg-muted-foreground/5'}>
                         <CardHeader className={''}>
-                            <CardTitle className={'text-2xl flex'}>{"Round Winrate"}: {70}% <ArrowDownIcon className={'w-8 h-8 text-red-400'}/></CardTitle>
+                            <CardTitle className={'text-xl flex'}>{"Round Winrate"}: {70}% <ArrowDownIcon className={'w-8 h-8 text-red-400'}/></CardTitle>
                         </CardHeader>
                     </Card>
-                    <Card className={'w-[25rem] border-muted-foreground/80 rounded-none hover:bg-muted-foreground/5'}>
+                    <Card className={'w-[19rem] border-muted-foreground/80 rounded-none hover:bg-muted-foreground/5'}>
                         <CardHeader className={''}>
-                            <CardTitle className={'text-2xl flex'}>{"5v4 Conversion Rate"}: {85}% <ArrowUpIcon className={'w-8 h-8 text-secondary-foreground'}/></CardTitle>
+                            <CardTitle className={'text-xl flex'}>{"5v4 Conversion"}: {85}% <ArrowUpIcon className={'w-8 h-8 text-secondary-foreground'}/></CardTitle>
                         </CardHeader>
                     </Card>
-                    <Card className={'w-[25rem] border-muted-foreground/80 rounded-none hover:bg-muted-foreground/5'}>
+                    <Card className={'w-[19rem] border-muted-foreground/80 rounded-none hover:bg-muted-foreground/5'}>
                         <CardHeader className={''}>
-                            <CardTitle className={'text-2xl flex '}>{"4v5 Conversion Rate"}: {43}% <ArrowUpIcon className={'w-8 h-8 text-secondary-foreground'}/></CardTitle>
+                            <CardTitle className={'text-xl flex '}>{"4v5 Conversion"}: {43}% <ArrowUpIcon className={'w-8 h-8 text-secondary-foreground'}/></CardTitle>
                         </CardHeader>
                     </Card>
 
                 </CardContent>
                 <CardContent className={'items-center justify-center flex gap-4 mx-0 mt-0 flex-col'}>
 
-                    <Card className={'w-[25rem] border-muted-foreground/80 rounded-none hover:bg-muted-foreground/5'}>
+                    <Card className={'w-[19rem] border-muted-foreground/80 rounded-none hover:bg-muted-foreground/5'}>
                         <CardHeader className={''}>
-                            <CardTitle className={'text-2xl flex'}>{"Retake Winrate"}: {40}% <ArrowDownIcon className={'w-8 h-8 text-red-400'}/></CardTitle>
+                            <CardTitle className={'text-xl flex'}>{"Retake Winrate"}: {40}% <ArrowDownIcon className={'w-8 h-8 text-red-400'}/></CardTitle>
                         </CardHeader>
                     </Card>
-                    <Card className={'w-[25rem] border-muted-foreground/80 rounded-none hover:bg-muted-foreground/5'}>
+                    <Card className={'w-[19rem] border-muted-foreground/80 rounded-none hover:bg-muted-foreground/5'}>
                         <CardHeader className={''}>
-                            <CardTitle className={'text-2xl flex'}>{"Post-plant Winrate"}: {73}% <ArrowUpIcon className={'w-8 h-8 text-secondary-foreground'}/></CardTitle>
+                            <CardTitle className={'text-xl flex'}>{"Post-plant"}: {73}% <ArrowUpIcon className={'w-8 h-8 text-secondary-foreground'}/></CardTitle>
                         </CardHeader>
                     </Card>
-                    <Card className={'w-[25rem] border-muted-foreground/80 rounded-none hover:bg-muted-foreground/5'}>
+                    <Card className={'w-[19rem] border-muted-foreground/80 rounded-none hover:bg-muted-foreground/5'}>
                         <CardHeader className={''}>
-                            <CardTitle className={'text-2xl flex'}>{"Avg. Trade Rate"}: {54}% <ArrowDownIcon className={'w-8 h-8 text-red-400'}/></CardTitle>
+                            <CardTitle className={'text-xl flex'}>{"Avg. Trade Rate"}: {54}% <ArrowDownIcon className={'w-8 h-8 text-red-400'}/></CardTitle>
                         </CardHeader>
                     </Card>
 
                 </CardContent>
                     </div>
             </Card>
+
+            <Card className={'rounded-none rounded-b-md'}>
+                <CardHeader className={'border-0 text-left mb-0 pb-4'}>
+                    <CardTitle>Individual Performance</CardTitle>
+                    <CardDescription><p className='text-wrap break-words'>Click on a player card for more details.</p>
+                    </CardDescription>
+                </CardHeader>
+                <div className={'flex flex-row space-x-4 m-4 mt-0'}>
+                    <CardContent className={'items-center justify-center flex gap-4 mx-0 mt-0 flex-col'}>
+
+
+                        <Dialog>
+                          <DialogTrigger asChild>
+                              <Card className={'border-muted-foreground/80 rounded-none hover:bg-muted-foreground/5'}>
+
+                                                <CardHeader className={''}>
+                                                    <CardTitle className={'text-4xl flex items-center'}><div className={'flex flex-col'}>
+                                                        <p className={'font-semibold'}>tam0w</p>
+                                                        <p className={'text-lg text-muted-foreground'}>Controller</p>
+                                                    </div>
+                                                        <img className={'ml-4 w-[5rem]'} src='https://server.blix.gg/imgproxy/S3W6sBwba5wMoUqO4P9okxTgg4nDhSvRD63WTfUiu6A/rs:fit:260:260:0/g:no/aHR0cHM6Ly9zdGF0aWMud2lraWEubm9jb29raWUubmV0L3ZhbG9yYW50L2ltYWdlcy8wLzA4L0FzdHJhX2ljb24ucG5n.webp'/>
+                                                    </CardTitle>
+                                                </CardHeader>
+                                            </Card>
+
+                          </DialogTrigger>
+                          <DialogContent className="">
+
+                            <div className="grid gap-4 py-4">
+                              <div className="grid grid-cols-4 items-center gap-4">
+                              <p className={'text-muted-foreground'}>Name</p>
+                              </div>
+                            </div>
+                          </DialogContent>
+                        </Dialog>
+
+                    </CardContent>
+
+                </div>
+                <div className={'flex flex-row space-x-4 mx-4 mb-3 items-center justify-center'}>
+
+                </div>
+
+                {/*<CardHeader className={'border-0 text-left mb-0 pb-4'}>*/}
+                {/*    <CardTitle>Individual Performance</CardTitle>*/}
+                {/*    <CardDescription><p className='text-wrap break-words'>Click on a player card for more details.</p>*/}
+                {/*    </CardDescription>*/}
+                {/*</CardHeader>*/}
+            </Card>
         </div>
-    </div>)
+    </div>
+)
 }
 
-const CustomTooltip = ({active, payload, label}) => {
+const CustomTooltip = ({
+    active, payload, label
+}) => {
     if (active && payload && payload.length) {
         console.log(payload)
         return (
@@ -252,7 +306,9 @@ const CustomTooltip = ({active, payload, label}) => {
     }
     return null;
 };
-const LineTooltip = ({active, payload, label}) => {
+const LineTooltip = ({
+    active, payload, label
+}) => {
     if (active && payload && payload.length) {
         console.log(payload)
         return (

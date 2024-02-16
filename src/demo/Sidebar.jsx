@@ -44,10 +44,7 @@ export default function Component({children}) {
              work.tamimmuhammed@gmail.com
          </span>
          </div>
-                          {/*<img src={'https://ui-avatars.com/api/?name=Tamim&background=060b10&bold=true&color=ffffff'}*/}
-                          {/*     className={`h-14 w-14 overflow-hidden border rounded-xl my-0 py-0 border-ring ${expanded ? "" : ""}`}/>*/}
-                          {/*<h1 className={`font text-md text-accent-foreground overflow-hidden ${expanded ? "w-72" : "w-0"}`}>Tamim Muhammed</h1>*/}
-                          {/*<p className={`text-foreground text-sm overflow-hidden ${expanded ? "w-72" : "w-0"}`}>work.tamimmuhammed@gmail.com</p>*/}
+
                       </div>
                   </div>
               </div>
