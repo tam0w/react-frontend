@@ -51,6 +51,36 @@ const agent_data = [['Jett', 0.747, 67], ['Raze', 0.651, 52], ['Sova', 0.346, 45
     ['Killjoy', 0.697, 41], ['Cypher', 0.2377, 67], ['Sage', 0.345, 52], ['Brimstone', 0.376, 45],
     ["Astra", 0.697, 41], ['Viper', 0.2377, 67], ['Fade', 0.345, 52], ['Phoenix', 0.376, 45], ['Harbour', 0.447, 42]]
 
+const player_performance = [{
+    name: 'tam0w',
+    KD: 1.17,
+    Kdiff: 25,
+    KAST: 0.76,
+    FBPR: 0.53,
+    FKdiff: 4,
+    OPkpr: 0.17,
+    Clutches: 54,
+    ADR: 134,
+    clutchrate: 0.34,
+    one_one: 0.77,
+    one_two: 0.53,
+    one_three: 0.34,
+    one_four: 0.15,
+    one_five: 0.04,
+}]
+
+    KD:
+    KAST:
+    FBPR:
+    OPkpr:
+    Clutches:
+    ADR:
+    clutchrate:
+    one_one:
+    one_two:
+    one_three:
+    one_four:
+    one_five
 
 export function Summary() {
 
