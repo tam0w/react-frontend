@@ -26,6 +26,8 @@ import {
 import {Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table.jsx";
 import {Dialog, DialogFooter, DialogHeader, DialogTitle, DialogDescription, DialogTrigger, DialogContent, DialogClose, DialogOverlay , DialogPortal} from "@/components/ui/dialog.jsx";
 import {Input} from "postcss";
+import {TeamPercentages} from "@/demo/trends/TeamPercentages.jsx";
+import {TrendsIndStats} from "@/demo/trends/TrendsIndStats.jsx";
 
 const mapwise_playdata = [{map: 'split', total_scrims: 18, rounds: 18*24, round_wins:14*18, round_losses: 18*10},
     {map: 'icebox', total_scrims: 12, rounds: 12*24, round_wins:14*12, round_losses: 12*10},
@@ -51,36 +53,136 @@ const agent_data = [['Jett', 0.747, 67], ['Raze', 0.651, 52], ['Sova', 0.346, 45
     ['Killjoy', 0.697, 41], ['Cypher', 0.2377, 67], ['Sage', 0.345, 52], ['Brimstone', 0.376, 45],
     ["Astra", 0.697, 41], ['Viper', 0.2377, 67], ['Fade', 0.345, 52], ['Phoenix', 0.376, 45], ['Harbour', 0.447, 42]]
 
-const player_performance = [{
-    name: 'tam0w',
-    KD: 1.17,
-    Kdiff: 25,
-    KAST: 0.76,
-    FBPR: 0.53,
-    FKdiff: 4,
-    OPkpr: 0.17,
-    Clutches: 54,
-    ADR: 134,
-    clutchrate: 0.34,
-    one_one: 0.77,
-    one_two: 0.53,
-    one_three: 0.34,
-    one_four: 0.15,
-    one_five: 0.04,
-}]
 
-    KD:
-    KAST:
-    FBPR:
-    OPkpr:
-    Clutches:
-    ADR:
-    clutchrate:
-    one_one:
-    one_two:
-    one_three:
-    one_four:
-    one_five
+
+// Writing dummy data for weekly player performance of each player in the team for the parameters mentioned above, both
+// for the over all and for each of the 7 valorant maps seperated as well.
+
+const weekly_player_performance = [{name: 'tam0w',
+    overall: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    split: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    bind: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    lotus: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    icebox: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    ascent: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    breeze: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    sunset: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,}},
+    {name: 'player2',
+    overall: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    split: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    bind: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    lotus: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    icebox: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    ascent: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    breeze: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    sunset: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,}},
+    {name: 'hmm',
+    overall: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    split: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    bind: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    lotus: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    icebox: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    ascent: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    breeze: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    sunset: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,}},
+    {name: 'p4',
+    overall: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    split: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    bind: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    lotus: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    icebox: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    ascent: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    breeze: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    sunset: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,}},
+    {name: 'gamer5',
+    overall: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    split: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    bind: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    lotus: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    icebox: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    ascent: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    breeze: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,},
+    sunset: {KD: 1.17,
+        Kdiff: 25, KAST: 0.76, FBPR: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
+        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,}}]
 
 export function Summary() {
 
@@ -221,100 +323,9 @@ export function Summary() {
 
         </div>
         <div className={'flex flex-row space-x-6 duration-1000 px-10'}>
-            <Card className={'rounded-none rounded-b-md'}>
-                <CardHeader className={'border-0 text-left mb-0 pb-4'}>
-                <CardTitle>Team Metrics</CardTitle>
-                    <CardDescription><p className='text-wrap break-words'>Recent measures of team-stats in various metrics.</p></CardDescription>
-                </CardHeader>
-                <div className={'flex flex-row space-x-4 mx-4 mb-3'}>
-                <CardContent className={'items-center justify-center flex gap-4 mx-0 mt-0 flex-col'}>
-                    <Card className={'w-[19rem] border-muted-foreground/80 rounded-none hover:bg-muted-foreground/5'}>
-                        <CardHeader className={''}>
-                            <CardTitle className={'text-xl flex'}>{"Round Winrate"}: {70}% <ArrowDownIcon className={'w-8 h-8 text-red-400'}/></CardTitle>
-                        </CardHeader>
-                    </Card>
-                    <Card className={'w-[19rem] border-muted-foreground/80 rounded-none hover:bg-muted-foreground/5'}>
-                        <CardHeader className={''}>
-                            <CardTitle className={'text-xl flex'}>{"5v4 Conversion"}: {85}% <ArrowUpIcon className={'w-8 h-8 text-secondary-foreground'}/></CardTitle>
-                        </CardHeader>
-                    </Card>
-                    <Card className={'w-[19rem] border-muted-foreground/80 rounded-none hover:bg-muted-foreground/5'}>
-                        <CardHeader className={''}>
-                            <CardTitle className={'text-xl flex '}>{"4v5 Conversion"}: {43}% <ArrowUpIcon className={'w-8 h-8 text-secondary-foreground'}/></CardTitle>
-                        </CardHeader>
-                    </Card>
+            <TeamPercentages/>
 
-                </CardContent>
-                <CardContent className={'items-center justify-center flex gap-4 mx-0 mt-0 flex-col'}>
-
-                    <Card className={'w-[19rem] border-muted-foreground/80 rounded-none hover:bg-muted-foreground/5'}>
-                        <CardHeader className={''}>
-                            <CardTitle className={'text-xl flex'}>{"Retake Winrate"}: {40}% <ArrowDownIcon className={'w-8 h-8 text-red-400'}/></CardTitle>
-                        </CardHeader>
-                    </Card>
-                    <Card className={'w-[19rem] border-muted-foreground/80 rounded-none hover:bg-muted-foreground/5'}>
-                        <CardHeader className={''}>
-                            <CardTitle className={'text-xl flex'}>{"Post-plant"}: {73}% <ArrowUpIcon className={'w-8 h-8 text-secondary-foreground'}/></CardTitle>
-                        </CardHeader>
-                    </Card>
-                    <Card className={'w-[19rem] border-muted-foreground/80 rounded-none hover:bg-muted-foreground/5'}>
-                        <CardHeader className={''}>
-                            <CardTitle className={'text-xl flex'}>{"Avg. Trade Rate"}: {54}% <ArrowDownIcon className={'w-8 h-8 text-red-400'}/></CardTitle>
-                        </CardHeader>
-                    </Card>
-
-                </CardContent>
-                    </div>
-            </Card>
-
-            <Card className={'rounded-none rounded-b-md'}>
-                <CardHeader className={'border-0 text-left mb-0 pb-4'}>
-                    <CardTitle>Individual Performance</CardTitle>
-                    <CardDescription><p className='text-wrap break-words'>Click on a player card for more details.</p>
-                    </CardDescription>
-                </CardHeader>
-                <div className={'flex flex-row space-x-4 m-4 mt-0'}>
-                    <CardContent className={'items-center justify-center flex gap-4 mx-0 mt-0 flex-col'}>
-
-
-                        <Dialog>
-                          <DialogTrigger asChild>
-                              <Card className={'border-muted-foreground/80 rounded-none hover:bg-muted-foreground/5'}>
-
-                                                <CardHeader className={''}>
-                                                    <CardTitle className={'text-4xl flex items-center'}><div className={'flex flex-col'}>
-                                                        <p className={'font-semibold'}>tam0w</p>
-                                                        <p className={'text-lg text-muted-foreground'}>Controller</p>
-                                                    </div>
-                                                        <img className={'ml-4 w-[5rem]'} src='https://server.blix.gg/imgproxy/S3W6sBwba5wMoUqO4P9okxTgg4nDhSvRD63WTfUiu6A/rs:fit:260:260:0/g:no/aHR0cHM6Ly9zdGF0aWMud2lraWEubm9jb29raWUubmV0L3ZhbG9yYW50L2ltYWdlcy8wLzA4L0FzdHJhX2ljb24ucG5n.webp'/>
-                                                    </CardTitle>
-                                                </CardHeader>
-                                            </Card>
-
-                          </DialogTrigger>
-                          <DialogContent className="">
-
-                            <div className="grid gap-4 py-4">
-                              <div className="grid grid-cols-4 items-center gap-4">
-                              <p className={'text-muted-foreground'}>Name</p>
-                              </div>
-                            </div>
-                          </DialogContent>
-                        </Dialog>
-
-                    </CardContent>
-
-                </div>
-                <div className={'flex flex-row space-x-4 mx-4 mb-3 items-center justify-center'}>
-
-                </div>
-
-                {/*<CardHeader className={'border-0 text-left mb-0 pb-4'}>*/}
-                {/*    <CardTitle>Individual Performance</CardTitle>*/}
-                {/*    <CardDescription><p className='text-wrap break-words'>Click on a player card for more details.</p>*/}
-                {/*    </CardDescription>*/}
-                {/*</CardHeader>*/}
-            </Card>
+            <TrendsIndStats/>
         </div>
     </div>
 )
