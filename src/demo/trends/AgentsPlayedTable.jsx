@@ -1,8 +1,28 @@
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table.jsx";
 import {Button} from "@/components/ui/button.jsx";
 import {ArrowDownIcon, ArrowUpIcon, OpenInNewWindowIcon} from "@radix-ui/react-icons";
+import {useState} from "react";
+import _ from 'lodash';
+
+const agent_data = [['Jett', 0.747, 67], ['Raze', 0.651, 52], ['Sova', 0.346, 45], ['Breach', 0.347, 42],
+    ['Omen', 0.697, 41], ['Iso', 0.2377, 67], ['Deadlock', 0.3455, 52], ['Skye', 0.376, 45], ['Yoru', 0.447, 42],
+    ['Reyna', 0.757, 62], ['Gekko', 0.651, 12], ['Sova', 0.346, 45], ['Breach', 0.347, 42],
+    ['Killjoy', 0.697, 41], ['Cypher', 0.2377, 67], ['Sage', 0.345, 52], ['Brimstone', 0.376, 45],
+    ["Astra", 0.697, 41], ['Viper', 0.2377, 67], ['Fade', 0.345, 52], ['Phoenix', 0.376, 45], ['Harbour', 0.447, 42]]
 
 export function AgentsPlayedTable() {
+    const [sortState, setSortState] = useState('high');
+    const [performanceData, setPerformanceData] = useState(sortData(agent_data, sortState));
+
+    function sortData(data, sortState) {
+        if (sortState === 'high') {
+            return data.sort((a, b) => b[1] - a[1]); // For descending order
+        }
+        else {
+            return data.sort((a, b) => a[1] - b[1]); // For ascending order
+        }
+    }
+
     return (
         <div className={'flex flex-col text-center'}>
           <Table className={'border-b-0'}>
