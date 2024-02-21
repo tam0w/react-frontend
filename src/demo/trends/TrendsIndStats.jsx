@@ -15,7 +15,7 @@ export function TrendsIndStats() {
         <Card className={'rounded-none rounded-b-md'}>
                 <CardHeader className={'border-0 text-left mb-0 pb-2'}>
                     <CardTitle>Individual Performance</CardTitle>
-                    <CardDescription><p className='text-wrap break-words'>Click on a player card for more details.</p>
+                    <CardDescription><p className='text-wrap break-words bg'>Click on a player card for more details.</p>
                     </CardDescription>
                 </CardHeader>
                 <div className={'flex flex-row space-x-4 m-4 mt-0'}>
