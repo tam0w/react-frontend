@@ -15,10 +15,10 @@ function getShade(color, percent) {
 }
 
 const agentClassColors = {
-  "Duelist": "#a84848", // red
-  "Initiator": "#4f984f", // green
-  "Controller": "#0553ff", // blue
-  "Sentinel": "#e8e87d", // yellow
+  "Duelist": "#879f83", // red
+  "Initiator": "#fdf7f7", // green
+  "Controller": "#092554", // blue
+  "Sentinel": "#4e556b", // yellow
 };
 
 const agentClasses = {
@@ -114,10 +114,10 @@ export function SubCardIndStats({name}) {
         fill={fill}
       />
 
-      <text stroke={'#000000'} strokeWidth={0.2} x={sx +10} y={sy-10} textAnchor={textAnchor} fill="#ffffff">{`Played: ${value}`}</text>
-      <text x={sx + (cos >= 0 ? 1 : -1) * 12} y={sy} dy={8} textAnchor={textAnchor} fill="#999">
-        {payload.name}
-      </text>
+      {/*<text stroke={'#000000'} strokeWidth={0.2} x={sx +10} y={sy-10} textAnchor={textAnchor} fill="#ffffff">{`Played: ${value}`}</text>*/}
+      {/*<text x={sx + (cos >= 0 ? 1 : -1) * 12} y={sy} dy={8} textAnchor={textAnchor} fill="#999">*/}
+      {/*  {payload.name}*/}
+      {/*</text>*/}
 
     </g>
   );
@@ -145,30 +145,38 @@ export function SubCardIndStats({name}) {
 
                   <Card className={'bg-zinc-950 border-0 shadow-none'}>
                       <CardTitle className={'text-3xl font text-card px-4 m-0'}>Agent Pickrate:</CardTitle>
-                      <CardContent className={'text-card font mx-4 m-0 overflow-visible'}>
+                      <CardContent className={'text-card font mx-4 m-0'}>
 
                           <PieChart width={400} height={300} padding={0,0,0,0}>
-                              <Pie  padding={0,0,0,0} activeIndex={activeIndex} activeShape={renderActiveShape} onMouseEnter={onPieEnter} dataKey={'value'} nameKey={'name'} data={weekly_agent_picks[currentMap]} cx={120} cy={140} outerRadius={100}>
+                              <Pie  padding={0,0,0,0} activeIndex={activeIndex} activeShape={renderActiveShape} onMouseEnter={onPieEnter}
+                                    onMouseLeave={()=>{
+                                      setTimeout(() => {
+                                          setActiveIndex()
+                                      }, 700);
+                                  }} dataKey={'value'} nameKey={'name'} data={weekly_agent_picks[currentMap]} cx={120} cy={140} outerRadius={100}>
                                   {
                                    weekly_agent_picks[currentMap].map((entry, index) => (
                                     <Cell key={`cell-${index}`} fill={getShade(agentClassColors[agentClasses[entry.name]], index * 0.2)} />
                                   ))
                                 }
                               </Pie>
+                              <Tooltip content={<Tooltipp/>} />
+                              {/*<Legend verticalAlign={'top'} width={250}/>*/}
+                              <Tooltip/>
                           </PieChart>
                       </CardContent>
                   </Card>
 
-                  <Card className={'bg-black/10 border-muted/70 rounded-none rounded-b p-2'}>
-                      <CardTitle className={'text-3xl font text-card px-4 py-2 m-0'}>Basic Performance:</CardTitle>
-                      <CardContent className={'text-card font px-4 m-0 py-2'}>
+                  <Card className={'bg-zinc-950 border-0 shadow-none'}>
+                      <CardTitle className={'text-3xl font text-card px-4 m-0'}>Agent Pickrate:</CardTitle>
+                      <CardContent className={'text-card font mx-4 m-0'}>
                           uhoh
                       </CardContent>
                   </Card>
 
-                  <Card className={'bg-black/10 border-muted/70 rounded-none rounded-b p-2'}>
-                      <CardTitle className={'text-3xl font text-card px-4 py-2 m-0'}>Basic Performance:</CardTitle>
-                      <CardContent className={'text-card font px-4 m-0 py-2'}>
+                  <Card className={'bg-zinc-950 border-0 shadow-none'}>
+                      <CardTitle className={'text-3xl font text-card px-4 m-0'}>Agent Pickrate:</CardTitle>
+                      <CardContent className={'text-card font mx-4 m-0'}>
                           uhoh
                       </CardContent>
                   </Card>
@@ -184,3 +192,23 @@ export function SubCardIndStats({name}) {
       </div>
   )
 }
+
+
+
+const Tooltipp = ({
+    active, payload, label
+}) => {
+    if (active && payload && payload.length) {
+        console.log(payload)
+        return (
+            <div className="bg-black/80 border border-ring rounded-md p-2">
+                    <h1 className={'text-button font'}>{`Played: ${payload[0].value}`}</h1>
+                    <h1 className={'normal based'}>
+                        {payload[0].name}
+                    </h1>
+            </div>
+        );
+    }
+
+    return null;
+};
