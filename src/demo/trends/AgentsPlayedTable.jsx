@@ -4,7 +4,7 @@ import {ArrowDownIcon, ArrowUpIcon, OpenInNewWindowIcon} from "@radix-ui/react-i
 import {useState} from "react";
 import _ from 'lodash';
 
-const agent_data = [['Jett', 0.747, 67], ['Raze', 0.651, 52], ['Sova', 0.346, 45], ['Breach', 0.347, 42],
+const agent_data = [['Jett', 0.7477, 67], ['Raze', 0.651, 52], ['Sova', 0.346, 45], ['Breach', 0.347, 42],
     ['Omen', 0.697, 41], ['Iso', 0.2377, 67], ['Deadlock', 0.3455, 52], ['Skye', 0.376, 45], ['Yoru', 0.447, 42],
     ['Reyna', 0.757, 62], ['Gekko', 0.651, 12], ['Sova', 0.346, 45], ['Breach', 0.347, 42],
     ['Killjoy', 0.697, 41], ['Cypher', 0.2377, 67], ['Sage', 0.345, 52], ['Brimstone', 0.376, 45],
@@ -46,7 +46,7 @@ export function AgentsPlayedTable() {
                           </TableCell>
                           <TableCell
                               className={'font-semibold text-card-foreground text-left'}>{info[0]}</TableCell><TableCell
-                            className={'text-left text-card-foreground font-semibold'}>{_.round(info[1] * 100, 3)}%</TableCell>
+                            className={'text-left text-card-foreground font-semibold'}>{_.round(info[1] * 100, 1)}%</TableCell>
                           <TableCell
                               className={'text-right text-card-foreground pr-6'}>{info[2]}</TableCell>
                         </TableRow>)

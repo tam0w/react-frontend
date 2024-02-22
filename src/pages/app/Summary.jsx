@@ -10,9 +10,9 @@ export function Summary() {
 
     return (
 
-        <div className={'flex flex-col py-4 space-y-4'}>
+        <div className={'flex flex-col py-4 space-y-4 w-screen'}>
 
-            <div className={'flex flex-row space-x-6 duration-1000 px-10'}>
+            <div className={'flex flex-row space-x-6 duration-1000 px-10 justify-center'}>
 
                 <div className={'flex flex-col text-center gap-2'}>
 
@@ -24,7 +24,7 @@ export function Summary() {
                 <AgentsPlayedTable/>
             </div>
 
-            <div className={'flex flex-row space-x-6 duration-1000 px-10'}>
+            <div className={'flex flex-row space-x-6 duration-1000 px-10 justify-center'}>
 
                 <TeamPercentages/>
                 <TrendsIndStats/>

@@ -109,7 +109,7 @@ export function SubCardIndStats({name}) {
 
                   </Card>
                     <div className={'flex flex-col gap-y-3'}>
-                  <h1 className="text-5xl font font-bold text-card">{name}</h1>
+                  <h1 className="text-5xl text-center font font-bold text-card">{name}</h1>
                         <SubSubAgentPlayrateTopAgents currentMap={currentMap} data={weekly_agent_picks}/>
                     </div>
 

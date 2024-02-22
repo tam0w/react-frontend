@@ -13,7 +13,7 @@ export default function Component({children}) {
 
 
   return (<>
-      <div className={`flex min-h-screen`}>
+      <div className={`flex min-h-screen z-50`}>
           <aside
               className={`${expanded ? "w-72" : "w-20"} bg-muted/50 font text-2xl text-card-foreground border-r-2 border-muted-foreground`}>
               <div className={`h-24 flex items-center space-x-2 justify-center border-muted-foreground`}>
