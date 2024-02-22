@@ -1,40 +1,88 @@
-import {Bar, BarChart, ResponsiveContainer, XAxis, YAxis} from "recharts";
+import {
+  ComposedChart,
+  Line,
+  Area,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from 'recharts';
 
-export function StatSubSubCard() {
-  const getColor = (value, average) => {
-    const difference = value - average;
-    if (difference > 0.1) {
-      return '#4da940'; // Above average
-    } else if (difference < -0.1) {
-      return '#703e3e'; // Below average
-    } else {
-      return '#c07f3b'; // Average range
-    }
-  };
+const blues = [
+  ["#457AA6"],
+  ["#457AA6", "#E3EBF2"],
+  ["#264F73", "#457AA6", "#E3EBF2"],
+  ["#264F73", "#457AA6", "#A2BBD2", "#E3EBF2"],
+  ["#1A334A", "#264F73", "#457AA6", "#A2BBD2", "#E3EBF2"]
+];
 
-  const CustomizedXAxisTick = ({ x, y, payload }) => {
+const getColor = (length, index) => {
+  if (length <= blues.length) {
+    return blues[length - 1][index];
+  }
+
+  return blues[blues.length - 1][index % blues.length];
+};
+
+const dataa = [
+  {
+    name: 'Page A',
+    uv: 590,
+    pv: 800,
+    amt: 1400,
+  },
+  {
+    name: 'Page B',
+    uv: 868,
+    pv: 967,
+    amt: 1506,
+  },
+  {
+    name: 'Page C',
+    uv: 1397,
+    pv: 1098,
+    amt: 989,
+  },
+  {
+    name: 'Page D',
+    uv: 1480,
+    pv: 1200,
+    amt: 1228,
+  },
+  {
+    name: 'Page E',
+    uv: 1520,
+    pv: 1108,
+    amt: 1100,
+  },
+  {
+    name: 'Page F',
+    uv: 1400,
+    pv: 680,
+    amt: 1700,
+  },
+];
+
+export function StatSubSubCard({currentMap, data}) {
     return (
-      <g transform={`translate(${x},${y})`}>
-        <text stroke={'#ffffff'} x={0} y={0} dy={16} textAnchor="middle" transform="rotate(0)">
-          {payload.value}
-        </text>
-      </g>
-    );
-  };
+      <ResponsiveContainer width={400} height={400}>
+        <ComposedChart
+          layout="vertical"
+          width={300}
+          height={300}
+          data={dataa}>
 
-  return (
-    <div className={'p-4'}>
-      <ResponsiveContainer width='100%' aspect={14 / 3.0}>
-        <BarChart data={playerStats} layout="vertical">
-          <XAxis tickLine={false} type="number" domain={[0, 3]} tick={CustomizedXAxisTick} stroke={'#ffffff'} height={55}
-          interval={1}/>
-          <YAxis dataKey="stat" hide reversed type="category" padding={0,0,0,0}/>
-            <Bar legendType="star" dataKey="value"
-                background={{ fill: '#3a3a3a' }}
-              fill={({ value }) => getColor(value, 1)}
-                barSize={25}
-            />
-        </BarChart>
+          <XAxis type="number" />
+          <YAxis dataKey="name" type="category" scale="band" />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="pv" barSize={20} fill="#413ea0" />
+          <Line dataKey="uv" stroke="#ff7300" />
+        </ComposedChart>
       </ResponsiveContainer>
-    </div>
-}
+    );
+  }
+
