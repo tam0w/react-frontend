@@ -13,10 +13,10 @@ function getShade(color, percent) {
 }
 
 const agentClassColors = {
-  "Duelist": "#ebff66", // red
-  "Initiator": "#8c6666", // green
-  "Controller": "#9e00ff", // blue
-  "Sentinel": "#4975ff", // yellow
+  "Duelist": "#136873", // red
+  "Initiator": "#4fffba", // green
+  "Controller": "#4b53ec", // blue
+  "Sentinel": "#000567", // yellow
 };
 
 const agentClasses = {
@@ -90,16 +90,16 @@ export function SubSubAgentPlayrate({currentMapp, data}) {
           <CardTitle className={'normal font text-card px-4 m-0 text-nowrap text-ellipsis'}>Agent Pickrate:</CardTitle>
           <CardContent className={'text-card font mx-4 m-0'}>
 
-            <PieChart width={260} height={300} padding={0,0,0,0}>
+            <PieChart width={300} height={300} padding={0,0,0,0}>
               <Pie activeIndex={activeIndex} activeShape={renderActiveShape} onMouseEnter={onPieEnter}
                                     onMouseLeave={()=>{
                                       setTimeout(() => {
                                           setActiveIndex()
                                       }, 900);
-                                  }} dataKey={'value'} nameKey={'name'} data={data[currentMapp]} cx={145} cy={115} outerRadius={100}>
+                                  }} dataKey={'value'} nameKey={'name'} data={data[currentMapp]} cx={160} cy={150} outerRadius={100}>
                                   {
                                    data[currentMapp].map((entry, index) => (
-                                    <Cell key={`cell-${index}`} fillOpacity={0.8} stroke={'#ffffff'} fill={getShade(agentClassColors[agentClasses[entry.name]], index * 0.2)} />
+                                    <Cell key={`cell-${index}`} stroke={'#ffffff'} fill={getShade(agentClassColors[agentClasses[entry.name]], index * 0.2)} />
                                   ))
                                 }
               </Pie>

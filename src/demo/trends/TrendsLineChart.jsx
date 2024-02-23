@@ -19,7 +19,7 @@ export function TrendsLineChart() {
                         time-frame.</p></CardDescription>
                 </CardHeader>
                 <CardContent className={'items-center justify-center flex p-4 m-0'}>
-                    <LineChart width={800} height={340} data={performance_indicators} stroke="#f3f3f3">
+                    <LineChart width={740} height={340} data={performance_indicators} stroke="#f3f3f3">
                         <XAxis dataKey={'day'} stroke="#fcfdfd" tickLine={false} type={'category'} tickMargin={10}
                                interval={"preserveStartEnd"}/>
                         <Line strokeWidth={2} dataKey={'fbpr'} stroke='#a377d4' dot={false}/>

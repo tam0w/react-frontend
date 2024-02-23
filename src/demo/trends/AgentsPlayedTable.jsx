@@ -28,7 +28,7 @@ export function AgentsPlayedTable() {
           <Table className={'border-b-0'}>
             <TableHeader>
               <TableRow className={'border-muted-foreground/30'}>
-                <TableHead className="text-muted-foreground w-[100px]">No.</TableHead>
+                <TableHead className="text-muted-foreground w-20">No.</TableHead>
                 <TableHead className={'px-8 text-muted-foreground'}>Agent</TableHead>
                 <TableHead className={'text-muted-foreground py-4'}>Win <br/> Rate</TableHead>
                 <TableHead
@@ -41,11 +41,11 @@ export function AgentsPlayedTable() {
                 performanceData.map((info, index) => {
                       if (index + 1 < 8)
                         return (<TableRow className={'border-muted-foreground/30 h-12'}>
-                          <TableCell className={'text-left text-card-foreground'}>
+                          <TableCell className={'text-left text-card-foreground w-20'}>
                             {sortState === 'high' ? index + 1 : performanceData.length - index}
                           </TableCell>
                           <TableCell
-                              className={'font-semibold text-card-foreground text-left'}>{info[0]}</TableCell><TableCell
+                              className={'font-semibold text-card-foreground text-left w-40'}>{info[0]}</TableCell><TableCell
                             className={'text-left text-card-foreground font-semibold'}>{_.round(info[1] * 100, 1)}%</TableCell>
                           <TableCell
                               className={'text-right text-card-foreground pr-6'}>{info[2]}</TableCell>

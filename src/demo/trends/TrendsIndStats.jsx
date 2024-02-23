@@ -12,7 +12,7 @@ const url5 = 'https://server.blix.gg/imgproxy/S3W6sBwba5wMoUqO4P9okxTgg4nDhSvRD6
 
 export function TrendsIndStats() {
     return (
-        <Card className={'rounded-none rounded-b-md'}>
+        <Card className={'rounded-none rounded-b-md px-1'}>
                 <CardHeader className={'border-0 text-left mb-0 pb-2'}>
                     <CardTitle>Individual Performance</CardTitle>
                     <CardDescription><p className='text-wrap break-words bg'>Click on a player card for more details.</p>

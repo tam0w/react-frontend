@@ -3,7 +3,7 @@ import {ArrowDownIcon, ArrowUpIcon} from "@radix-ui/react-icons";
 
 export function TeamPercentages() {
     return (
-        <Card className={'rounded-none rounded-b-md'}>
+        <Card className={'rounded-none rounded-b-md px-1'}>
                 <CardHeader className={'border-0 text-left mb-0 pb-4'}>
                 <CardTitle>Team Metrics</CardTitle>
                     <CardDescription><p className='text-wrap break-words'>Recent measures of team-stats in various metrics.</p></CardDescription>
