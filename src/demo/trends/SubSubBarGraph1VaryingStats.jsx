@@ -42,24 +42,22 @@ const dataArray = Object.entries(data)
   .map(([name, value]) => ({ name, value }));
 
   return (
-    <ResponsiveContainer width={400} height={400}>
       <ComposedChart
         layout="vertical"
-        width={300}
-        height={300}
+        width={400}
+        height={400}
         data={dataArray}>
 
-        <XAxis type="number" />
-        <YAxis dataKey="name" type="category" />
+        <XAxis tickLine={false} stroke={'#ffffff'} type="number" />
+        <YAxis dataKey="name" type="category" stroke={'#ffffff'} />
         <Tooltip />
-        <Bar dataKey={'value'} barSize={40}>
+        <Bar dataKey={'value'} barSize={40} >
           {
             dataArray.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={blueColors[index % blueColors.length]} />
+              <Cell key={`cell-${index}`}  fill={blueColors[index % blueColors.length]} />
             ))
           }
         </Bar>
       </ComposedChart>
-    </ResponsiveContainer>
   );
 }

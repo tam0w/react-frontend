@@ -191,13 +191,13 @@ export function SubCardIndStats({name}) {
                 <div className="flex flex-col justify-center items-center pr-10">
 
                     <CardTitle
-                        className={'pl-16 text-3xl font text-card text-center'}><span className={'font-bold'}>{stat.toLocaleUpperCase()}</span> <br/>Across
+                        className={'pl-16 pb-4 text-3xl font text-card text-center'}><span className={'font-bold'}>{stat.toLocaleUpperCase()}</span> <br/>Across
                         Maps</CardTitle>
 
 
                     <StatSubSubCard data={weekly_player_performance} stat={stat}/>
 
-                    <div className={'pl-16 flex gap-4 justify-center items-center pb-4'}>
+                    <div className={'pl-16 pt-2 flex gap-4 justify-center items-center pb-4'}>
 
                         <Button className={'px-2 hover:bg-indigo-500 m-0'} onClick={() => {
                             setStat(stat_list[(stat_list.indexOf(stat) - 1 + stat_list.length) % stat_list.length])
