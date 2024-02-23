@@ -9,28 +9,7 @@ import {StatSubSubCard} from "@/demo/trends/StatSubSubCard.jsx";
 import {SubSubAgentPlayrateTopAgents} from "@/demo/trends/SubSubAgentPlayrateTopAgents.jsx";
 import {SubSubBarGraph1VaryingStats} from "@/demo/trends/SubSubBarGraph1VaryingStats.jsx";
 
-const weekly_agent_picks = {
-    overall: [{name: 'Jett', value: 12}, {name: 'Raze', value: 5}, {name: 'Phoenix', value: 3}, {
-        name: 'Sage',
-        value: 3
-    }, {name: 'Omen', value: 2}],
-    split: [{name: 'Jett', value: 12}, {name: 'Raze', value: 5}, {name: 'Phoenix', value: 3}, {name: 'Omen', value: 2}],
-    bind: [{name: 'Jett', value: 12}, {name: 'Raze', value: 5}, {name: 'Phoenix', value: 3}, {name: 'Omen', value: 2}],
-    lotus: [{name: 'Jett', value: 12}, {name: 'Raze', value: 5}, {name: 'Phoenix', value: 3}, {name: 'Omen', value: 2}],
-    icebox: [{name: 'Jett', value: 12}, {name: 'Raze', value: 5}, {name: 'Phoenix', value: 3}, {
-        name: 'Omen',
-        value: 2
-    }],
-    ascent: [{name: 'Jett', value: 12}, {name: 'Raze', value: 5}, {name: 'Phoenix', value: 3}, {
-        name: 'Omen',
-        value: 2
-    }],
-    breeze: [{name: 'Jett', value: 12}, {name: 'Raze', value: 5}, {name: 'Phoenix', value: 3}, {
-        name: 'Omen',
-        value: 2
-    }],
-    sunset: [{name: 'Jett', value: 12}, {name: 'Raze', value: 5}, {name: 'Phoenix', value: 3}, {name: 'Omen', value: 2}]
-}
+
 
 const stat_list = ['KD', 'Kdiff', 'KAST', 'FBPR', 'TFB', 'FKdiff', 'OPkpr', 'Clutches', 'ADR', 'clutchrate']
 
