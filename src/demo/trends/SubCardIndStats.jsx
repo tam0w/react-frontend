@@ -9,7 +9,28 @@ import {StatSubSubCard} from "@/demo/trends/StatSubSubCard.jsx";
 import {SubSubAgentPlayrateTopAgents} from "@/demo/trends/SubSubAgentPlayrateTopAgents.jsx";
 import {SubSubBarGraph1VaryingStats} from "@/demo/trends/SubSubBarGraph1VaryingStats.jsx";
 
-
+const weekly_agent_picks = {
+    overall: [{name: 'Jett', value: 12}, {name: 'Raze', value: 5}, {name: 'Phoenix', value: 3}, {
+        name: 'Sage',
+        value: 3
+    }, {name: 'Omen', value: 2}],
+    split: [{name: 'Jett', value: 12}, {name: 'Raze', value: 5}, {name: 'Phoenix', value: 3}, {name: 'Omen', value: 2}],
+    bind: [{name: 'Jett', value: 12}, {name: 'Raze', value: 5}, {name: 'Phoenix', value: 3}, {name: 'Omen', value: 2}],
+    lotus: [{name: 'Jett', value: 12}, {name: 'Raze', value: 5}, {name: 'Phoenix', value: 3}, {name: 'Omen', value: 2}],
+    icebox: [{name: 'Jett', value: 12}, {name: 'Raze', value: 5}, {name: 'Phoenix', value: 3}, {
+        name: 'Omen',
+        value: 2
+    }],
+    ascent: [{name: 'Jett', value: 12}, {name: 'Raze', value: 5}, {name: 'Phoenix', value: 3}, {
+        name: 'Omen',
+        value: 2
+    }],
+    breeze: [{name: 'Jett', value: 12}, {name: 'Raze', value: 5}, {name: 'Phoenix', value: 3}, {
+        name: 'Omen',
+        value: 2
+    }],
+    sunset: [{name: 'Jett', value: 12}, {name: 'Raze', value: 5}, {name: 'Phoenix', value: 3}, {name: 'Omen', value: 2}]
+}
 
 const stat_list = ['KD', 'Kdiff', 'KAST', 'FBPR', 'TFB', 'FKdiff', 'OPkpr', 'Clutches', 'ADR', 'clutchrate']
 
@@ -55,16 +76,6 @@ const weekly_player_performance = [
         one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04
     }]
 
-const dataaa = [
-    {name: "Page A", pv: 240},
-    {name: "B", pv: 2210},
-    {name: "C", pv: 2300},
-    {name: "Page D", pv: 2000},
-    {name: "Zero", pv: 0},
-    {name: "Hi", pv: 123},
-    {name: "Bye", pv: 2091}
-];
-
 export function SubCardIndStats({name}) {
 
     const [progress, setProgress] = useState(40)
@@ -104,7 +115,7 @@ export function SubCardIndStats({name}) {
 
 
 
-                    <SubSubAgentPlayrate currentMapp={currentMap} data={weekly_agent_picks}/>
+                    <SubSubAgentPlayrate currentMapp={currentMap} name={name}/>
 
 
                 </div>
@@ -137,7 +148,7 @@ export function SubCardIndStats({name}) {
                     </Card>
                     <div className={'flex flex-col gap-y-3'}>
                         <h1 className="text-5xl text-center font font-bold text-card">{name}</h1>
-                        <SubSubAgentPlayrateTopAgents currentMap={currentMap} data={weekly_agent_picks}/>
+                        <SubSubAgentPlayrateTopAgents currentMap={currentMap}  name={name}/>
                     </div>
 
                     <Card className={'bg-zinc-950 border-0 shadow-none space-y-10 text-nowrap text-ellipsis '}>
