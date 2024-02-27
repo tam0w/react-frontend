@@ -86,24 +86,22 @@ export function SubSubAgentPlayrate({currentMap, name}) {
 
     const [activeIndex, setActiveIndex] = useState();
 
+    const [pickData, setpickData] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
     useEffect(() => {
         fetch(`https://rest-api-t8pa.onrender.com/api/player/${name}/picks`)
         .then(response => response.json())
         .then(data => {
-            setData(data)
+            setpickData(data)
             setIsLoading(false)
-            console.log("GRAPHHHHHH",data[currentMap], name)
         });
     }
     , [name])
 
-        const [data, setData] = useState('')
-    const [isLoading, setIsLoading] = useState(true)
-
     if (isLoading) {
         return <div><h1 className={'font button-text text-card text-center'}>Loading...</h1></div>
-    }
 
+    }
     return (
         <Card className={'bg-zinc-950 border-0 shadow-none items-center justify-center'}>
           <CardTitle className={'normal font text-card px-4 m-0 text-nowrap text-ellipsis'}>Agent Pickrate:</CardTitle>
@@ -115,9 +113,9 @@ export function SubSubAgentPlayrate({currentMap, name}) {
                                       setTimeout(() => {
                                           setActiveIndex()
                                       }, 900);
-                                  }} dataKey={'value'} nameKey={'name'} data={data[currentMap]} cx={160} cy={150} outerRadius={100}>
+                                  }} dataKey={'value'} nameKey={'name'} data={pickData[currentMap]} cx={160} cy={150} outerRadius={100}>
                                   {
-                                   data[currentMap].map((entry, index) => (
+                                   pickData[currentMap].map((entry, index) => (
                                     <Cell key={`cell-${index}`} stroke={'#ffffff'} fill={getShade(agentClassColors[agentClasses[entry.name]], index * 0.2)} />
                                   ))
                                 }
@@ -126,7 +124,7 @@ export function SubSubAgentPlayrate({currentMap, name}) {
             </PieChart>
           </CardContent>
         </Card>
-        // <h1 className={'font text-card'}>test</h1>
+
     )
 }
 

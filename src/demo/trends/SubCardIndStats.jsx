@@ -97,7 +97,7 @@ export function SubCardIndStats({name}) {
                 <h1 className="normal font text-card text-nowrap">Individual Stat Trends:</h1>
                 <div className={'flex gap-4 pr-10 mx-0'}>
                     <Button className={'px-2 hover:bg-indigo-500'} onClick={() => {
-                        setStat(list_of_maps[(list_of_maps.indexOf(currentMap) - 1 + list_of_maps.length) % list_of_maps.length])
+                        setCurrentMap(list_of_maps[(list_of_maps.indexOf(currentMap) - 1 + list_of_maps.length) % list_of_maps.length])
                     }}><ChevronLeftIcon className={'h-5 w-5'}/></Button>
                     <CardTitle className={'text-3xl font text-card text-center w-32 font-bold'}>{currentMap.toLocaleUpperCase()}</CardTitle>
                     <Button className={'px-2 hover:bg-indigo-500'} onClick={() => {
@@ -115,7 +115,7 @@ export function SubCardIndStats({name}) {
 
 
 
-                    <SubSubAgentPlayrate currentMapp={currentMap} name={name}/>
+                    <SubSubAgentPlayrate currentMap={currentMap} name={name}/>
 
 
                 </div>
