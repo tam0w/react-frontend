@@ -8,87 +8,52 @@ import {SubSubAgentPlayrate} from "@/demo/trends/SubSubAgentPlayrate.jsx";
 import {StatSubSubCard} from "@/demo/trends/StatSubSubCard.jsx";
 import {SubSubAgentPlayrateTopAgents} from "@/demo/trends/SubSubAgentPlayrateTopAgents.jsx";
 import {SubSubBarGraph1VaryingStats} from "@/demo/trends/SubSubBarGraph1VaryingStats.jsx";
-
-const weekly_agent_picks = {
-    overall: [{name: 'Jett', value: 12}, {name: 'Raze', value: 5}, {name: 'Phoenix', value: 3}, {
-        name: 'Sage',
-        value: 3
-    }, {name: 'Omen', value: 2}],
-    split: [{name: 'Jett', value: 12}, {name: 'Raze', value: 5}, {name: 'Phoenix', value: 3}, {name: 'Omen', value: 2}],
-    bind: [{name: 'Jett', value: 12}, {name: 'Raze', value: 5}, {name: 'Phoenix', value: 3}, {name: 'Omen', value: 2}],
-    lotus: [{name: 'Jett', value: 12}, {name: 'Raze', value: 5}, {name: 'Phoenix', value: 3}, {name: 'Omen', value: 2}],
-    icebox: [{name: 'Jett', value: 12}, {name: 'Raze', value: 5}, {name: 'Phoenix', value: 3}, {
-        name: 'Omen',
-        value: 2
-    }],
-    ascent: [{name: 'Jett', value: 12}, {name: 'Raze', value: 5}, {name: 'Phoenix', value: 3}, {
-        name: 'Omen',
-        value: 2
-    }],
-    breeze: [{name: 'Jett', value: 12}, {name: 'Raze', value: 5}, {name: 'Phoenix', value: 3}, {
-        name: 'Omen',
-        value: 2
-    }],
-    sunset: [{name: 'Jett', value: 12}, {name: 'Raze', value: 5}, {name: 'Phoenix', value: 3}, {name: 'Omen', value: 2}]
-}
+import {ButtonSpin} from "@/demo/ButtonSpin.jsx";
 
 const stat_list = ['KD', 'Kdiff', 'KAST', 'FBPR', 'TFB', 'FKdiff', 'OPkpr', 'Clutches', 'ADR', 'clutchrate']
-
-const weekly_player_performance = [
-    {
-        name: 'overall', KD: 1.17,
-        Kdiff: 25, KAST: 0.76, FBPR: 0.53, TFB: 0.68, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
-        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04
-    },
-    {
-        name: 'split', KD: 1.57,
-        Kdiff: 25, KAST: 0.76, FBPR: 0.53, TFB: 0.63, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
-        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,
-    },
-    {
-        name: 'bind', KD: 1.17,
-        Kdiff: 25, KAST: 0.76, FBPR: 0.53, TFB: 0.83, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
-        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,
-    },
-    {
-        name: 'lotus', KD: 1.7,
-        Kdiff: 25, KAST: 0.76, FBPR: 0.53, TFB: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
-        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,
-    },
-    {
-        name: 'icebox', KD: 0.47,
-        Kdiff: 25, KAST: 0.76, FBPR: 0.53, TFB: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
-        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,
-    },
-    {
-        name: 'ascent', KD: 0.76,
-        Kdiff: 25, KAST: 0.76, FBPR: 0.53, TFB: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
-        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,
-    },
-    {
-        name: 'breeze', KD: 0.92,
-        Kdiff: 25, KAST: 0.76, FBPR: 0.53, TFB: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
-        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04,
-    },
-    {
-        name: 'sunset', KD: 1.17,
-        Kdiff: 25, KAST: 0.76, FBPR: 0.53, TFB: 0.53, FKdiff: 4, OPkpr: 0.17, Clutches: 54, ADR: 134, clutchrate: 0.34,
-        one_one: 0.77, one_two: 0.53, one_three: 0.34, one_four: 0.15, one_five: 0.04
-    }]
 
 export function SubCardIndStats({name}) {
 
     const [progress, setProgress] = useState(40)
+    const [performanceData, setPerformanceData] = useState()
+    const [isLoading, setIsLoading] = useState(true)
+    const [data, setData] = useState()
+    
+        useEffect(() => {
+        fetch(`https://rest-api-t8pa.onrender.com/api/player/${name}/picks`)
+        .then(response => response.json())
+        .then(data => {
+            setData(data)
+            setIsLoading(false)
+            console.log("TEST",data[currentMap], name)
+        });
+    }
+    , [])
 
     useEffect(() => {
         const timer = setTimeout(() => setProgress(66), 500)
         return () => clearTimeout(timer)
     }, [])
 
+    useEffect(() => {
+        fetch(`https://rest-api-t8pa.onrender.com/api/player/${name}/weeklystats`)
+            .then(response => response.json())
+            .then(data => {
+                setPerformanceData(data)
+                setIsLoading(false)
+            });
+
+    }, []);
+
+
     const [currentMap, setCurrentMap] = useState('overall')
     const [stat, setStat] = useState('KD');
 
     const list_of_maps = ['overall', 'split', 'bind', 'lotus', 'icebox', 'ascent', 'breeze', 'sunset']
+
+    if (isLoading) {
+        return <div><ButtonSpin className={'bg-muted'}/></div>
+    }
 
 
     return (
@@ -111,11 +76,11 @@ export function SubCardIndStats({name}) {
 
                 <div className="flex justify-between gap-x-32 flex-row gap-10 pt-4">
 
-                    <SubSubBarGraph1VaryingStats data={weekly_player_performance.find(performance => performance.name === currentMap)}/>
+                    <SubSubBarGraph1VaryingStats data={performanceData.find(performance => performance.name === currentMap)}/>
 
 
 
-                    <SubSubAgentPlayrate currentMap={currentMap} name={name}/>
+                    <SubSubAgentPlayrate currentMap={currentMap} name={name} data={data}/>
 
 
                 </div>
@@ -126,52 +91,52 @@ export function SubCardIndStats({name}) {
                     <Card className={'bg-zinc-950 border-0 shadow-none space-y-10  text-nowrap text-ellipsis'}>
                         <CardTitle className={'text-card text-3xl font px-4 m-0'}>FB Rounds: <span
                             className={'text-slate-300 text-3xl font m-0 font-bold'}>
-                          {weekly_player_performance.find(performance => performance.name === currentMap)?.FBPR * 100}%
+                          {(performanceData.find(performance => performance.name === currentMap)?.FBPR * 100).toFixed(2)}%
                       </span>
                             <Progress className={'p-0 m-0'}
-                                      value={weekly_player_performance.find(performance => performance.name === currentMap)?.FBPR * 100}
+                                      value={performanceData.find(performance => performance.name === currentMap)?.FBPR * 100}
                                       color={'above'}/>
                         </CardTitle>
                         <CardTitle className={'text-card text-3xl font px-4 m-0'}>Avg. KAST: <span
                             className={'text-slate-300 text-3xl m-0 font-bold'}>
-                          {weekly_player_performance.find(performance => performance.name === currentMap)?.KAST * 100}%
+                          {(performanceData.find(performance => performance.name === currentMap)?.KAST * 100).toFixed(2)}%
                           <Progress className={'p-0 m-0'}
-                                    value={weekly_player_performance.find(performance => performance.name === currentMap)?.KAST * 100}
+                                    value={performanceData.find(performance => performance.name === currentMap)?.KAST * 100}
                                     color={'below'}/>
                       </span></CardTitle>
                         <CardTitle className={'text-card text-3xl font px-4 m-0'}>1vX Winrate: <span
                             className={'text-slate-300 text-3xl m-0 font-bold'}>
-                          {weekly_player_performance.find(performance => performance.name === currentMap)?.clutchrate * 100}%
+                          {(performanceData.find(performance => performance.name === currentMap)?.clutchrate * 100).toFixed(2)}%
                           <Progress className={'p-0 m-0'} value={80} color={'above'}/>
                       </span></CardTitle>
 
                     </Card>
                     <div className={'flex flex-col gap-y-3'}>
                         <h1 className="text-5xl text-center font font-bold text-card">{name}</h1>
-                        <SubSubAgentPlayrateTopAgents currentMap={currentMap}  name={name}/>
+                        <SubSubAgentPlayrateTopAgents currentMap={currentMap}  name={name} data={data}/>
                     </div>
 
                     <Card className={'bg-zinc-950 border-0 shadow-none space-y-10 text-nowrap text-ellipsis '}>
                         <CardTitle className={'text-card text-3xl font  px-4 m-0'}>Avg. KDA: <span
                             className={'text-slate-300 text-3xl font m-0 font-bold'}>
-                          {weekly_player_performance.find(performance => performance.name === currentMap)?.KD}</span>
+                          {(performanceData.find(performance => performance.name === currentMap)?.KD).toFixed(2)}</span>
                             <Progress className={'p-0 m-0'}
-                                      value={weekly_player_performance.find(performance => performance.name === currentMap)?.KD * 100}
+                                      value={performanceData.find(performance => performance.name === currentMap)?.KD * 100}
                                       color={'above'}/>
 
                         </CardTitle>
                         <CardTitle className={'text-card text-3xl font p-0 px-4 m-0'}>True FB %: <span
                             className={'text-slate-300 text-3xl m-0 font-bold'}>
-                          {weekly_player_performance.find(performance => performance.name === currentMap)?.TFB * 100}%
+                          {(performanceData.find(performance => performance.name === currentMap)?.TFB * 100).toFixed(2)}%
                           <Progress className={'p-0 m-0'}
-                                    value={weekly_player_performance.find(performance => performance.name === currentMap)?.TFB * 100}
+                                    value={performanceData.find(performance => performance.name === currentMap)?.TFB * 100}
                                     color={'mid'}/>
                       </span></CardTitle>
                         <CardTitle className={'text-card text-3xl font text-slate-300 p-0 px-4 m-0'}>ADR: <span
                             className={'text-slate-300 text-3xl m-0 font-bold'}>
-                          {weekly_player_performance.find(performance => performance.name === currentMap)?.ADR}
+                          {(performanceData.find(performance => performance.name === currentMap)?.ADR)}
                             <Progress className={'p-0 m-0'}
-                                      value={weekly_player_performance.find(performance => performance.name === currentMap)?.ADR - 100}
+                                      value={performanceData.find(performance => performance.name === currentMap)?.ADR - 100}
                                       color={'mid'}/>
                       </span></CardTitle>
                     </Card>
@@ -185,7 +150,7 @@ export function SubCardIndStats({name}) {
                         Maps</CardTitle>
 
 
-                    <StatSubSubCard data={weekly_player_performance} stat={stat}/>
+                    <StatSubSubCard data={performanceData} stat={stat}/>
 
                     <div className={'pl-16 pt-2 flex gap-4 justify-center items-center pb-4'}>
 
@@ -205,15 +170,3 @@ export function SubCardIndStats({name}) {
         </div>
     )
 }
-
-// <div className={'flex gap-4 justify-center'}>
-//     <CardTitle
-//         className={'text-3xl font text-card text-center '}>{stat.toLocaleUpperCase()}</CardTitle>
-//     <Button className={'px-2 hover:bg-indigo-500 m-0'} onClick={() => {
-//         setStat(stat_list[(stat_list.indexOf(stat) - 1 + stat_list.length) % stat_list.length])
-//     }}><ChevronLeftIcon className={'h-5 w-5'}/></Button>
-//     <Button className={'px-2 hover:bg-indigo-500 m-0'} onClick={() => {
-//         setStat(stat_list[(stat_list.indexOf(stat) + 1 + stat_list.length) % stat_list.length])
-//     }}><ChevronRightIcon className={'h-5 w-5'}/></Button>
-// </div>
-// <StatSubSubCard data={weekly_player_performance} stat={stat}/>

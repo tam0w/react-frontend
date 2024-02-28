@@ -19,25 +19,6 @@ const agentClassColors = {
   "Sentinel": "#000567", // yellow
 };
 
-const agentClasses = {
-  "Phoenix": "Duelist",
-  "Jett": "Duelist",
-  "Reyna": "Duelist",
-  "Yoru": "Duelist",
-  "Raze": "Duelist",
-  "Breach": "Initiator",
-  "Sova": "Initiator",
-  "KAY/O": "Initiator",
-  "Chamber": "Initiator",
-  "Brimstone": "Controller",
-  "Omen": "Controller",
-  "Astra": "Controller",
-  "Viper": "Controller",
-  "Sage": "Sentinel",
-  "Cypher": "Sentinel",
-  "Killjoy": "Sentinel",
-};
-
     const renderActiveShape = (props) => {
   const RADIAN = Math.PI / 180;
   const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle, fill, payload, percent, value } = props;
@@ -52,7 +33,7 @@ const agentClasses = {
   const textAnchor = cos >= 0 ? 'start' : 'end';
 
   return (
-    <g className={''}>
+    <g>
 
       <Sector
         cx={cx}
@@ -82,24 +63,15 @@ const agentClasses = {
         setActiveIndex(index);
     };
 
-export function SubSubAgentPlayrate({currentMap, name}) {
+export function SubSubAgentPlayrate({currentMap, name, data}) {
 
     const [activeIndex, setActiveIndex] = useState();
 
-    const [pickData, setpickData] = useState([])
     const [isLoading, setIsLoading] = useState(true)
-    useEffect(() => {
-        fetch(`https://rest-api-t8pa.onrender.com/api/player/${name}/picks`)
-        .then(response => response.json())
-        .then(data => {
-            setpickData(data)
-            setIsLoading(false)
-        });
-    }
-    , [name])
+
 
     if (isLoading) {
-        return <div><h1 className={'font button-text text-card text-center'}>Loading...</h1></div>
+        return <div><h1 className={'font button-text text-card text-left'}>Loading...</h1></div>
 
     }
     return (
@@ -113,10 +85,10 @@ export function SubSubAgentPlayrate({currentMap, name}) {
                                       setTimeout(() => {
                                           setActiveIndex()
                                       }, 900);
-                                  }} dataKey={'value'} nameKey={'name'} data={pickData[currentMap]} cx={160} cy={150} outerRadius={100}>
+                                  }} dataKey={'value'} nameKey={'name'} data={data[currentMap]} cx={160} cy={150} outerRadius={100}>
                                   {
-                                   pickData[currentMap].map((entry, index) => (
-                                    <Cell key={`cell-${index}`} stroke={'#ffffff'} fill={getShade(agentClassColors[agentClasses[entry.name]], index * 0.2)} />
+                                   data[currentMap].map((entry, index) => (
+                                    <Cell key={`cell-${index}`} stroke={'#ffffff'} fill={getShade(agentClassColors[entry.role], index * 0.2)} />
                                   ))
                                 }
               </Pie>
