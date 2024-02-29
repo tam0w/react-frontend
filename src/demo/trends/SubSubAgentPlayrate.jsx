@@ -13,10 +13,10 @@ function getShade(color, percent) {
 }
 
 const agentClassColors = {
-  "Duelist": "#136873", // red
-  "Initiator": "#4fffba", // green
-  "Controller": "#4b53ec", // blue
-  "Sentinel": "#000567", // yellow
+  "Duelist": "#ff6e54",
+  "Initiator": "#83cccc",
+  "Controller": "#85dea4",
+  "Sentinel": "#ecda95",
 };
 
     const renderActiveShape = (props) => {
@@ -62,42 +62,44 @@ const agentClassColors = {
   const onPieEnter = (_, index) => {
         setActiveIndex(index);
     };
-
+function getRoleCounts(data) {
+  const roleCounts = {};
+  data.forEach(item => {
+    if (item.role && !roleCounts[item.role]) {
+      roleCounts[item.role] = item.value;
+    } else if (item.role) {
+      roleCounts[item.role] += item.value;
+    }
+  });
+  return Object.entries(roleCounts).map(([name, value]) => ({ name, value }));
+}
 export function SubSubAgentPlayrate({currentMap, name, data}) {
 
     const [activeIndex, setActiveIndex] = useState();
+    const roleCounts = getRoleCounts(data[currentMap]);
 
-    const [isLoading, setIsLoading] = useState(true)
-
-
-    if (isLoading) {
-        return <div><h1 className={'font button-text text-card text-left'}>Loading...</h1></div>
-
-    }
-    return (
-        <Card className={'bg-zinc-950 border-0 shadow-none items-center justify-center'}>
-          <CardTitle className={'normal font text-card px-4 m-0 text-nowrap text-ellipsis'}>Agent Pickrate:</CardTitle>
-          <CardContent className={'text-card font mx-4 m-0'}>
-
-            <PieChart width={300} height={300} padding={0,0,0,0}>
-              <Pie activeIndex={activeIndex} activeShape={renderActiveShape} onMouseEnter={onPieEnter}
-                                    onMouseLeave={()=>{
-                                      setTimeout(() => {
-                                          setActiveIndex()
-                                      }, 900);
-                                  }} dataKey={'value'} nameKey={'name'} data={data[currentMap]} cx={160} cy={150} outerRadius={100}>
-                                  {
-                                   data[currentMap].map((entry, index) => (
-                                    <Cell key={`cell-${index}`} stroke={'#ffffff'} fill={getShade(agentClassColors[entry.role], index * 0.2)} />
-                                  ))
-                                }
-              </Pie>
-              <Tooltip content={<Tooltipp/>} />
-            </PieChart>
-          </CardContent>
-        </Card>
-
-    )
+   return (
+    <Card className={'bg-zinc-950 border-0 shadow-none items-center justify-center'}>
+      <CardTitle className={'normal font text-card px-4 m-0 text-nowrap text-ellipsis'}>Agent Pickrate:</CardTitle>
+      <CardContent className={'text-card font mx-4 m-0'}>
+        <PieChart width={300} height={300} padding={0,0,0,0}>
+          <Pie activeIndex={activeIndex} activeShape={renderActiveShape} onMouseEnter={onPieEnter} stroke={'#ffffff'}
+            onMouseLeave={()=>{
+              setTimeout(() => {
+                setActiveIndex()
+              }, 900);
+            }} dataKey={'value'} nameKey={'name'} data={roleCounts} cx={160} cy={150} outerRadius={100}>
+            {
+            roleCounts.map((entry, index) => (
+              <Cell key={`cell-${index}`} stroke={'#000000'} fill={agentClassColors[entry.name]} />
+            ))
+            }
+          </Pie>
+          <Tooltip content={<Tooltipp/>} />
+        </PieChart>
+      </CardContent>
+    </Card>
+  )
 }
 
 const Tooltipp = ({

@@ -16,15 +16,25 @@ export function SubCardIndStats({name}) {
 
     const [progress, setProgress] = useState(40)
     const [performanceData, setPerformanceData] = useState()
-    const [isLoading, setIsLoading] = useState(true)
-    const [data, setData] = useState()
-    
+    const [isLoading, setIsLoading] = useState([true, true])
+    const [pickdata, setPickData] = useState()
+
+    const allLoaded = isLoading.every(value => value === false);
+    const [currentMap, setCurrentMap] = useState('overall')
+    const [stat, setStat] = useState('KD');
+
+    const list_of_maps = ['overall', 'split', 'bind', 'lotus', 'icebox', 'ascent', 'breeze', 'sunset']
+
         useEffect(() => {
         fetch(`https://rest-api-t8pa.onrender.com/api/player/${name}/picks`)
         .then(response => response.json())
         .then(data => {
-            setData(data)
-            setIsLoading(false)
+            setPickData(data)
+            setIsLoading(prevIsLoading => {
+              const newIsLoading = [...prevIsLoading];
+              newIsLoading[0] = false;
+              return newIsLoading;
+            });
             console.log("TEST",data[currentMap], name)
         });
     }
@@ -40,21 +50,22 @@ export function SubCardIndStats({name}) {
             .then(response => response.json())
             .then(data => {
                 setPerformanceData(data)
-                setIsLoading(false)
+                setIsLoading(prevIsLoading => {
+                  const newIsLoading = [...prevIsLoading];
+                  newIsLoading[1] = false;
+                  return newIsLoading;
+                });
             });
 
     }, []);
 
-
-    const [currentMap, setCurrentMap] = useState('overall')
-    const [stat, setStat] = useState('KD');
-
-    const list_of_maps = ['overall', 'split', 'bind', 'lotus', 'icebox', 'ascent', 'breeze', 'sunset']
-
-    if (isLoading) {
-        return <div><ButtonSpin className={'bg-muted'}/></div>
+    if (pickdata && pickdata[currentMap]) {
+      var sortedData = [...pickdata[currentMap]].sort((a, b) => b.value - a.value);
     }
 
+    if (allLoaded === false) {
+        return <div className={'p-80 m-10 mx-64'}><ButtonSpin/></div>
+    }
 
     return (
         <div className="px-4 py-0 my-0 text-card-foreground">
@@ -80,7 +91,7 @@ export function SubCardIndStats({name}) {
 
 
 
-                    <SubSubAgentPlayrate currentMap={currentMap} name={name} data={data}/>
+                    <SubSubAgentPlayrate currentMap={currentMap} name={name} data={pickdata}/>
 
 
                 </div>
@@ -113,7 +124,7 @@ export function SubCardIndStats({name}) {
                     </Card>
                     <div className={'flex flex-col gap-y-3'}>
                         <h1 className="text-5xl text-center font font-bold text-card">{name}</h1>
-                        <SubSubAgentPlayrateTopAgents currentMap={currentMap}  name={name} data={data}/>
+                        <SubSubAgentPlayrateTopAgents currentMap={currentMap} name={name} data={sortedData} />
                     </div>
 
                     <Card className={'bg-zinc-950 border-0 shadow-none space-y-10 text-nowrap text-ellipsis '}>

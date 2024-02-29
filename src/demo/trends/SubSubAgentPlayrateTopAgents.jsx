@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 
 const agents_images = {
-  Breach: 'https://i.postimg.cc/cCcNr9LF/brim.webp',
+  Breach: 'https://i.postimg.cc/7h4kP8wC/breach.png',
   Jett: 'https://i.postimg.cc/CLmg0Qt1/jett.webp',
   Kayo: 'https://i.postimg.cc/tCXjLjBw/kayo.png',
   Killjoy: 'https://i.postimg.cc/fLxGr2mM/kj.png',
@@ -29,39 +29,32 @@ Neon : 'https://i.postimg.cc/Y0M5K6zY/neon.webp',
 
 export function SubSubAgentPlayrateTopAgents({currentMap, name, data}) {
 
-    const [isLoading, setIsLoading] = useState(true)
-
-
-    if (isLoading) {
-        return <div><h1 className={'font button-text text-card text-center'}>Loading...</h1></div>
-    }
-
     return (
-        <div className={'space-y-3 pt-2'}>
-          {data[currentMap].map((agent, index) => {
+        <div className={'space-y-5'}>
+          {data.map((agent, index) => {
 
             if (index === 0) {
               return (
-              <div key={index} className={'flex flex-row items-center justify-center'}>
-                <img src={agents_images[agent.name]} className={'w-28 h-28'}/>
-                  <p>{agent.name}</p>
+              <div key={index} className={'flex flex-row items-center justify-center h-20'}>
+                <img src={agents_images[agent.name]} className={'justify-center items-center w-20 h-20'}/>
               </div>
             )
             }
           })
           }
-          <div className={'flex flex-row'}>
-            {data[currentMap].map((agent, index) => {
-              if (index < 5 && index > 0){
+          <div className={'flex flex-row space-x-2 items-center justify-center w-52 h-14 pb-4'}>
+            {data.map((agent, index) => {
+              if (index < 4 && index > 0){
               return (
-              <div key={index} className={'flex flex-row items-center justify-center space-x-2'}>
-                <img src={agents_images[agent.name]} className={'w-12 h-12'}/>
+              <div key={index} className={'flex flex-row items-center justify-center'}>
+                <img src={agents_images[agent.name]} className={'h-14'}/>
               </div>
             )
             }
             }
             )}
           </div>
+
         </div>
     )
 }
