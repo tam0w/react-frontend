@@ -13,10 +13,10 @@ function getShade(color, percent) {
 }
 
 const agentClassColors = {
-  "Duelist": "#ff6e54",
-  "Initiator": "#83cccc",
-  "Controller": "#85dea4",
-  "Sentinel": "#ecda95",
+  "Duelist": "rgb(229,132,132)",
+  "Initiator": "rgba(180,243,240,0.81)",
+  "Controller": "rgba(133,144,189,0.66)",
+  "Sentinel": "rgba(190,183,132,0.83)",
 };
 
     const renderActiveShape = (props) => {
@@ -83,7 +83,7 @@ export function SubSubAgentPlayrate({currentMap, name, data}) {
       <CardTitle className={'normal font text-card px-4 m-0 text-nowrap text-ellipsis'}>Agent Pickrate:</CardTitle>
       <CardContent className={'text-card font mx-4 m-0'}>
         <PieChart width={300} height={300} padding={0,0,0,0}>
-          <Pie activeIndex={activeIndex} activeShape={renderActiveShape} onMouseEnter={onPieEnter} stroke={'#ffffff'}
+          <Pie animationDuration={0} activeIndex={activeIndex} activeShape={renderActiveShape} onMouseEnter={onPieEnter} stroke={'#ffffff'}
             onMouseLeave={()=>{
               setTimeout(() => {
                 setActiveIndex()
