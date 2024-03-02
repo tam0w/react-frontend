@@ -13,6 +13,7 @@ import {
 } from 'recharts';
 import {CardTitle} from "@/components/ui/card.jsx";
 import chroma from 'chroma-js';
+import {useEffect, useState} from "react";
 
 const numColors = 11;
 const minSaturation = 0.3;
@@ -34,19 +35,23 @@ const blueColors = [
   '#c06da2'
 ]
 
-export function SubSubBarGraph1VaryingStats({data}) {
+export function SubSubBarGraph1VaryingStats({data, avg}) {
 
 const excludedProperties = ['name', 'ADR', 'FKdiff', 'Kdiff', 'Clutches'];
 const dataArray = Object.entries(data)
   .filter(([name]) => !excludedProperties.includes(name))
   .map(([name, value]) => ({ name, value }));
+const avgArray = avg.filter(item => !excludedProperties.includes(item.name));
+
+const dataObj = Object.fromEntries(dataArray.map(item => [item.name, item]));
+const sortedDataArray = avgArray.map(item => dataObj[item.name]);
 
   return (
       <ComposedChart
         layout="vertical"
         width={400}
         height={400}
-        data={dataArray}>
+        data={sortedDataArray}>
 
         <XAxis tickLine={false} stroke={'#ffffff'} type="number" />
         <YAxis dataKey="name" type="category" stroke={'#ffffff'} />
@@ -58,6 +63,7 @@ const dataArray = Object.entries(data)
             ))
           }
         </Bar>
+        <Line type={'monotone'} strokeWidth={3} data={avgArray} dataKey="value" stroke={'#93ffb3'} dot={false}/>
       </ComposedChart>
   );
 }

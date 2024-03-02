@@ -19,7 +19,7 @@ export function TrendsIndStats() {
                     </CardDescription>
                 </CardHeader>
                 <div className={'flex flex-row space-x-4 m-4 mt-0'}>
-                    <PlayerCardOverview name={'tam0w'} color={'secondary-foreground'} img={url1}/>
+                    <PlayerCardOverview name={'tam0w'} color={'secondary-foreground'} img={'https://i.postimg.cc/hvQ54mP0/sova.png'}/>
                     <PlayerCardOverview name={'kyaki'} color={'secondary-foreground'} img={url2}/>
                     <PlayerCardOverview name={'hmmm'} img={url3}/>
                 </div>

@@ -16,7 +16,7 @@ const blues = ["#092a48", "#1e3a52", "#274767", "#2a4c72", "#496e93", "#5c84a4",
 
 
 
-export function StatSubSubCard({stat, data}) {
+export function StatSubSubCard({stat, data, avg}) {
     return (
 
       <ResponsiveContainer width={400} height={400} >
@@ -26,7 +26,7 @@ export function StatSubSubCard({stat, data}) {
           height={300}
           data={data}>
           <XAxis type="number" stroke={'#ffffff'}/>
-          <YAxis dataKey="name" type="category" stroke={'#ffffff'} />
+          <YAxis dataKey='map' type="category" stroke={'#ffffff'} />
           <Tooltip />
           <Bar dataKey={stat} barSize={50} >
           {
@@ -35,6 +35,7 @@ export function StatSubSubCard({stat, data}) {
             ))
           }
           </Bar>
+            <Line type={'monotone'} strokeWidth={3} data={avg} dataKey="value" stroke={'#93ffb3'} dot={false}/>
         </ComposedChart>
       </ResponsiveContainer>
     );
