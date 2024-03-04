@@ -12,33 +12,19 @@ import {ButtonSpin} from "@/demo/ButtonSpin.jsx";
 
 const stat_list = ['KD', 'Kdiff', 'KAST', 'FBPR', 'TFB', 'FKdiff', 'OPkpr', 'Clutches', 'ADR', 'clutchrate']
 
-export function SubCardIndStats({name}) {
+export function SubCardIndStats({name, data}) {
+
 
     const [progress, setProgress] = useState(40)
     const [performanceData, setPerformanceData] = useState()
-    const [isLoading, setIsLoading] = useState([true, true, true, true])
-    const [pickdata, setPickData] = useState()
-
+    const [isLoading, setIsLoading] = useState([true, true, true])
+    const [pickdata, setPickData] = useState(data)
     const allLoaded = isLoading.every(value => value === false);
     const [currentMap, setCurrentMap] = useState('overall')
     const [stat, setStat] = useState('KD');
 
     const list_of_maps = ['overall', 'split', 'bind', 'lotus', 'icebox', 'ascent', 'breeze', 'sunset']
 
-        useEffect(() => {
-        fetch(`https://rest-api-t8pa.onrender.com/api/player/${name}/picks`)
-        .then(response => response.json())
-        .then(data => {
-            setPickData(data)
-            setIsLoading(prevIsLoading => {
-              const newIsLoading = [...prevIsLoading];
-              newIsLoading[0] = false;
-              return newIsLoading;
-            });
-            console.log("TEST",data, name)
-        });
-    }
-    , [])
 
     useEffect(() => {
         const timer = setTimeout(() => setProgress(66), 500)
@@ -52,7 +38,7 @@ export function SubCardIndStats({name}) {
                 setPerformanceData(data)
                 setIsLoading(prevIsLoading => {
                   const newIsLoading = [...prevIsLoading];
-                  newIsLoading[1] = false;
+                  newIsLoading[0] = false;
                   console.log(data, "PERFORMANCE DATA")
                   return newIsLoading;
                 });
@@ -69,7 +55,7 @@ export function SubCardIndStats({name}) {
             setAvg(data)
             setIsLoading(prevIsLoading => {
               const newIsLoading = [...prevIsLoading];
-              newIsLoading[2] = false;
+              newIsLoading[1] = false;
               return newIsLoading;
             });
             console.log("avg for map",data, name)
@@ -86,7 +72,7 @@ export function SubCardIndStats({name}) {
             setAvgStat(data)
             setIsLoading(prevIsLoading => {
               const newIsLoading = [...prevIsLoading];
-              newIsLoading[3] = false;
+              newIsLoading[2] = false;
               return newIsLoading;
             });
             console.log("STATSTAT",data, stat)

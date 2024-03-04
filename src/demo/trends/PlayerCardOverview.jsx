@@ -2,7 +2,10 @@ import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card.jsx
 import {Dialog, DialogContent, DialogTrigger} from "@/components/ui/dialog.jsx";
 import {SubCardIndStats} from "@/demo/trends/SubCardIndStats.jsx";
 
-export function PlayerCardOverview({name, color, img}) {
+export function PlayerCardOverview({name, color, img, data}) {
+
+
+
     return (
                     <CardContent className={`items-center justify-center flex gap-4 mx-0 mt-0 flex-col`}>
 
@@ -24,7 +27,7 @@ export function PlayerCardOverview({name, color, img}) {
 
                           <DialogContent className="">
 
-                            <SubCardIndStats name={name}/>
+                            <SubCardIndStats name={name} data={data}/>
                           </DialogContent>
                         </Dialog>
                     </CardContent>
