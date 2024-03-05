@@ -12,13 +12,13 @@ import {ButtonSpin} from "@/demo/ButtonSpin.jsx";
 
 const stat_list = ['KD', 'Kdiff', 'KAST', 'FBPR', 'TFB', 'FKdiff', 'OPkpr', 'Clutches', 'ADR', 'clutchrate']
 
-export function SubCardIndStats({name, data}) {
+export function SubCardIndStats({name, pickdata}) {
 
 
     const [progress, setProgress] = useState(40)
     const [performanceData, setPerformanceData] = useState()
     const [isLoading, setIsLoading] = useState([true, true, true])
-    const [pickdata, setPickData] = useState(data)
+    // const [pickdata, setPickData] = useState(data)
     const allLoaded = isLoading.every(value => value === false);
     const [currentMap, setCurrentMap] = useState('overall')
     const [stat, setStat] = useState('KD');
