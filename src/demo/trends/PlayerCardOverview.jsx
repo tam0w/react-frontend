@@ -42,7 +42,7 @@ export function PlayerCardOverview({name, color, img}) {
       }, [name]);
 
     return (
-        loading ? <div className={'justify-center items-center'}><ButtonSpin className={'m-8 mt-10'}/></div> :
+        loading ? <div className={'justify-center items-center mx-1'}><ButtonSpin className={'m-6 mt-12'}/></div> :
         (<CardContent className={`items-center justify-center flex gap-4 mx-0 mt-0 flex-col`}>
 
 

@@ -15,21 +15,14 @@ const stat_list = ['KD', 'Kdiff', 'KAST', 'FBPR', 'TFB', 'FKdiff', 'OPkpr', 'Clu
 export function SubCardIndStats({name, pickdata}) {
 
 
-    const [progress, setProgress] = useState(40)
+    const [brackets, setBrackets] = useState()
     const [performanceData, setPerformanceData] = useState()
-    const [isLoading, setIsLoading] = useState([true, true, true])
-    // const [pickdata, setPickData] = useState(data)
+    const [isLoading, setIsLoading] = useState([true, true, true, true])
     const allLoaded = isLoading.every(value => value === false);
     const [currentMap, setCurrentMap] = useState('overall')
     const [stat, setStat] = useState('KD');
-
     const list_of_maps = ['overall', 'split', 'bind', 'lotus', 'icebox', 'ascent', 'breeze', 'sunset']
 
-
-    useEffect(() => {
-        const timer = setTimeout(() => setProgress(66), 500)
-        return () => clearTimeout(timer)
-    }, [])
 
     useEffect(() => {
         fetch(`https://rest-api-t8pa.onrender.com/api/player/${name}/weeklystats`)
@@ -39,7 +32,6 @@ export function SubCardIndStats({name, pickdata}) {
                 setIsLoading(prevIsLoading => {
                   const newIsLoading = [...prevIsLoading];
                   newIsLoading[0] = false;
-                  console.log(data, "PERFORMANCE DATA")
                   return newIsLoading;
                 });
             });
@@ -80,15 +72,44 @@ export function SubCardIndStats({name, pickdata}) {
     }
     , [stat])
 
-
-
-
     if (pickdata && pickdata[currentMap]) {
       var sortedData = [...pickdata[currentMap]].sort((a, b) => b.value - a.value);
 
     }
 
-    if (allLoaded === false) {
+    if (performanceData && avg && !brackets) {
+        console.log('chalre ki?')
+        var bracketedData = {};
+
+        performanceData.forEach(mapData => {
+        let map = mapData.name;
+        bracketedData[map] = {};
+
+        for (let stat in mapData) {
+            if (stat === 'name') continue; // Skip the 'name' property
+
+            let performance = mapData[stat];
+            let averageObj = avg.find(avgStat => avgStat.name === stat);
+            let average = averageObj ? averageObj.value : null;
+
+
+            if (performance < average * 0.75) {
+                bracketedData[map][stat] = 'below';
+            } else if (performance > average * 1.25) {
+                bracketedData[map][stat] = 'above';
+            } else {
+                bracketedData[map][stat] = 'mid';
+            }
+        }
+    });
+        const newIsLoading = [...isLoading];
+        newIsLoading[3] = false;
+        setIsLoading(newIsLoading);
+
+    setBrackets(bracketedData)
+    }
+
+        if (allLoaded === false) {
         return <div className={'p-80 m-10 mx-64'}><ButtonSpin/></div>
     }
 
@@ -260,19 +281,19 @@ export function SubCardIndStats({name, pickdata}) {
                       </span>
                                 <Progress className={'p-0 m-0'}
                                           value={performanceData.find(performance => performance.name === currentMap)?.FBPR}
-                                          color={'above'}/>
+                                          color={brackets[currentMap].FBPR}/>
                             </CardTitle>
                             <CardTitle className={'text-card text-3xl font px-4 m-0 min-w-72'}>Avg. KAST: <span
                                 className={'text-slate-300 text-3xl m-0 font-bold'}>
                           {(performanceData.find(performance => performance.name === currentMap)?.KAST * 100).toFixed(0)}%
                           <Progress className={'p-0 m-0'}
                                     value={performanceData.find(performance => performance.name === currentMap)?.KAST * 100}
-                                    color={'below'}/>
+                                    color={brackets[currentMap].KAST}/>
                       </span></CardTitle>
                             <CardTitle className={'text-card text-3xl font px-4 m-0 min-w-72'}>1vX Winrate: <span
                                 className={'text-slate-300 text-3xl m-0 font-bold'}>
                           {(performanceData.find(performance => performance.name === currentMap)?.clutchrate * 100).toFixed(0)}%
-                          <Progress className={'p-0 m-0'} value={80} color={'above'}/>
+                          <Progress className={'p-0 m-0'} value={80} color={brackets[currentMap].clutchrate}/>
                       </span></CardTitle>
 
                         </Card>
@@ -287,7 +308,7 @@ export function SubCardIndStats({name, pickdata}) {
                           {(performanceData.find(performance => performance.name === currentMap)?.KD).toFixed(2)}</span>
                                 <Progress className={'p-0 m-0'}
                                           value={performanceData.find(performance => performance.name === currentMap)?.KD * 100}
-                                          color={'above'}/>
+                                          color={brackets[currentMap].KD}/>
 
                             </CardTitle>
                             <CardTitle className={'text-card text-3xl font p-0 px-4 m-0 min-w-72'}>True FB %: <span
@@ -295,14 +316,14 @@ export function SubCardIndStats({name, pickdata}) {
                           {(performanceData.find(performance => performance.name === currentMap)?.TFB * 100).toFixed(0)}%
                           <Progress className={'p-0 m-0'}
                                     value={performanceData.find(performance => performance.name === currentMap)?.TFB * 100}
-                                    color={'mid'}/>
+                                    color={brackets[currentMap].TFB}/>
                       </span></CardTitle>
                             <CardTitle className={'text-card text-3xl font text-slate-300 p-0 px-4 m-0 min-w-72'}>ADR: <span
                                 className={'text-slate-300 text-3xl m-0 font-bold'}>
                           {(performanceData.find(performance => performance.name === currentMap)?.ADR)}
                                 <Progress className={'p-0 m-0'}
                                           value={performanceData.find(performance => performance.name === currentMap)?.ADR - 100}
-                                          color={'mid'}/>
+                                          color={brackets[currentMap].ADR}/>
                       </span></CardTitle>
                         </Card>
                     </div>
