@@ -27,7 +27,7 @@ export default function Component({children}) {
                       {children}
                   </SidebarContext.Provider>
               </ul>
-              <Separator className={'bg-muted-foreground'}/>
+              <Separator className={'bg-muted-foreground mt-72'}/>
               <button className='py-6' onClick={() => setExpanded((curr) => !curr)}>
                   {expanded ? <DoubleArrowLeftIcon className='h-6 w-6 hover:muted ml-6'/> :
                       <DoubleArrowRightIcon className="h-6 w-6 hover:muted ml-6"/>}
@@ -36,9 +36,9 @@ export default function Component({children}) {
 
                   <div className={`flex flex-col gap-y-4 ${expanded ? "" : ""}`}>
                       {/*<Separator className={'bg-muted-foreground'}/>*/}
-                      <div className={`flex items-center cursor-pointer p-2
-      transition-colors group`}>
-         <img src={'https://ui-avatars.com/api/?name=Tamim&bold=true&color=ffffff&background=342334'} className={'border-2 border-card-foreground opacity-70 rounded-md ml-1 h-14 w-14'}/>
+                      <div className={`flex items-center cursor-pointer p-2 transition-colors group`}>
+         <img src={'https://ui-avatars.com/api/?name=Tamim&bold=true&color=ffffff&background=342334'}
+              className={'border-2 border-card-foreground opacity-70 rounded-md ml-1 h-14 w-14'}/>
          <div className={`flex flex-col`}><span className={`text-muted-foreground overflow-hidden break-words text-sm transition-all ${expanded ? "w-52 ml-3" : "hidden"}`}>
              <span className={'text-card-foreground text-lg'}>Tamim Muhammed</span> <br/>
              work.tamimmuhammed@gmail.com
@@ -62,7 +62,7 @@ export function SidebarItem({icon, text, path}) {
 
     return (
         <li>
-            <NavLink to={path} className={`flex items-center cursor-pointer p-6
+            <NavLink to={path} className={`flex items-center cursor-pointer p-6 py-4
       transition-colors group hover:bg-primary/20 hover:text-blue-100 hover:border-l-4 
             `}>
         {icon}

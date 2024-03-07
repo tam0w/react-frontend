@@ -4,10 +4,10 @@ import {Button} from "@/components/ui/button.jsx";
 import {ChevronLeftIcon, ChevronRightIcon} from "@radix-ui/react-icons";
 import {useEffect, useState} from "react";
 import {Progress} from "@/components/ui/progress.jsx";
-import {SubSubAgentPlayrate} from "@/demo/trends/SubSubAgentPlayrate.jsx";
-import {StatSubSubCard} from "@/demo/trends/StatSubSubCard.jsx";
-import {SubSubAgentPlayrateTopAgents} from "@/demo/trends/SubSubAgentPlayrateTopAgents.jsx";
-import {SubSubBarGraph1VaryingStats} from "@/demo/trends/SubSubBarGraph1VaryingStats.jsx";
+import {SubSubAgentPlayrate} from "@/pages/app/trends/SubSubAgentPlayrate.jsx";
+import {StatSubSubCard} from "@/pages/app/trends/StatSubSubCard.jsx";
+import {SubSubAgentPlayrateTopAgents} from "@/pages/app/trends/SubSubAgentPlayrateTopAgents.jsx";
+import {SubSubBarGraph1VaryingStats} from "@/pages/app/trends/SubSubBarGraph1VaryingStats.jsx";
 import {ButtonSpin} from "@/demo/ButtonSpin.jsx";
 
 const stat_list = ['KD', 'Kdiff', 'KAST', 'FBPR', 'TFB', 'FKdiff', 'OPkpr', 'Clutches', 'ADR', 'clutchrate']

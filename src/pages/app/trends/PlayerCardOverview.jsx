@@ -1,8 +1,7 @@
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card.jsx";
 import {Dialog, DialogContent, DialogTrigger} from "@/components/ui/dialog.jsx";
-import {SubCardIndStats} from "@/demo/trends/SubCardIndStats.jsx";
+import {SubCardIndStats} from "@/pages/app/trends/SubCardIndStats.jsx";
 import {useEffect, useState} from "react";
-import {Button} from "@/components/ui/button.jsx";
 import {ButtonSpin} from "@/demo/ButtonSpin.jsx";
 
 export function PlayerCardOverview({name, color, img}) {
