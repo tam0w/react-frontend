@@ -4,43 +4,43 @@ import {MapCard} from "@/pages/app/mapwise/MapCard.jsx";
 const maps = {
     split:
         {name: 'Split',
-        img: 'https://static.wikia.nocookie.net/valorant/images/d/d6/Loading_Screen_Split.png',
+        img: 'https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/bltdfd43bd79d9b3410/5eabe9fea20afe612d82f833/split3.jpg?auto=webp&width=915',
         sites: 2,
         minimap: 'https://static.wikia.nocookie.net/valorant/images/f/ff/Split_minimap.png'
         },
     bind:
         {name: 'Bind',
-        img: 'https://static.wikia.nocookie.net/valorant/images/2/23/Loading_Screen_Bind.png',
+        img: 'https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/blta6be60823002f711/5eabe92d4398082ffe23fdb5/bind5.jpg?auto=webp&width=915',
         sites: 2,
         minimap: 'https://static.wikia.nocookie.net/valorant/images/0/0b/Bind_minimap.png'
         },
     ascent:
         {name: 'Ascent',
-        img: 'https://static.wikia.nocookie.net/valorant/images/e/e7/Loading_Screen_Ascent.png',
+        img: 'https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/blt9e24fe356d0faf81/5eabe9c497c0a55d71b7fceb/ascent2.jpg?auto=webp&width=915',
         sites: 2,
         minimap: 'https://static.wikia.nocookie.net/valorant/images/0/04/Ascent_minimap.png'
         },
     breeze:
         {name: 'Breeze',
-        img: 'https://static.wikia.nocookie.net/valorant/images/1/10/Loading_Screen_Breeze.png',
+        img: 'https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/bltc1e8e8a2228fef3a/607f9e3e92f0063e5c0711cb/breeze_6.jpg?auto=webp&width=915',
         sites: 2,
         minimap: 'https://static.wikia.nocookie.net/valorant/images/7/78/Breeze_minimap.png'
         },
     icebox:
         {name: 'Icebox',
-        img: 'https://static.wikia.nocookie.net/valorant/images/1/13/Loading_Screen_Icebox.png',
+        img: 'https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/blt31a23d8039f4b397/626c2e248c90c334d0d403ab/04-2022-Icebox-11.jpg?auto=webp&width=915',
         sites: 2,
         minimap: 'https://static.wikia.nocookie.net/valorant/images/c/cf/Icebox_minimap.png'
         },
     lotus:
         {name: 'Lotus',
-        img: 'https://static.wikia.nocookie.net/valorant/images/d/d0/Loading_Screen_Lotus.png',
+        img: 'https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/blt0bb2058c88892462/63b8a805ade3a64c67746408/Lotus_Screenshot_1.jpg?auto=webp&width=915',
         sites: 3,
         minimap: 'https://static.wikia.nocookie.net/valorant/images/b/be/Lotus_minimap.png'
         },
     sunset:
         {name: 'Sunset',
-        img: 'https://static.wikia.nocookie.net/valorant/images/5/5c/Loading_Screen_Sunset.png',
+        img: 'https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/bltfd30724baf6d6273/64e9335dd0af545809a84bd6/Sunset_Screenshot_3.png?auto=webp&width=915',
         sites: 3,
         minimap: 'https://static.wikia.nocookie.net/valorant/images/7/7b/Sunset_minimap.png'
         }
