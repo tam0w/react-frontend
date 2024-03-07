@@ -6,7 +6,7 @@ import {TimeWindowSelector} from "@/demo/trends/TimeWindowSelector.jsx";
 import {AgentsPlayedTable} from "@/demo/trends/AgentsPlayedTable.jsx";
 
 
-export function Summary() {
+export function Trends() {
 
     return (
 
