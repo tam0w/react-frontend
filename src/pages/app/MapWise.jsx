@@ -1,5 +1,6 @@
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card.jsx";
 import {MapCard} from "@/pages/app/mapwise/MapCard.jsx";
+import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from "@/components/ui/carousel.jsx";
 
 const maps = {
     split:
@@ -59,17 +60,23 @@ export function MapWise() {
                 <CardContent className={'m-0 p-0'}>
 
                     <div className={`flex flex-row space-x-14 duration-1000 py-4 px-14 w-full justify-center`}>
-                        <MapCard map={maps.sunset}/>
-                        <MapCard map={maps.lotus}/>
-                        <MapCard map={maps.icebox}/>
-                        <MapCard map={maps.breeze}/>
+                        <Carousel opts={{align: "start", loop: true,}}>
+                          <CarouselContent>
+                              {Object.entries(maps).map(([key, value]) => {
+                                return (
+                                  <CarouselItem className={'basis-1/3'}><MapCard map={value}/></CarouselItem>
+                                )
+                              })}
+
+                          </CarouselContent>
+                          <CarouselPrevious />
+                          <CarouselNext />
+                        </Carousel>
+
                     </div>
 
                     <div className={`flex flex-row space-x-20 duration-1000 py-4 px-14 w-full justify-center`}>
 
-                        <MapCard map={maps.bind}/>
-                        <MapCard map={maps.ascent}/>
-                        <MapCard map={maps.split}/>
                     </div>
                 </CardContent>
             </Card>
