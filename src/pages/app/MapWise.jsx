@@ -50,20 +50,25 @@ const maps = {
 
 
 export function MapWise() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(1);
 
   return (
-      <div className={`flex flex-col space-x-6 duration-1000 py-4 px-14 w-full`}>
-          <div className={`flex flex-row space-x-14 duration-1000 py-4 px-14 w-full justify-center`}>
-              <Carousel opts={{align: "start", loop: true,}}>
-                  <CarouselContent>
+      <div className={`flex flex-col m-14 my-4 duration-1000 w-full border border-ring`}>
+          <CardHeader>
+                  <CardTitle className={`r`}>Map Data: {' map'}</CardTitle>
+                  <CardDescription className={``}>Click on a map for more details.</CardDescription>
+              </CardHeader>
+          <div className={`flex flex-row duration-1000 w-full justify-center items-center px-4`}>
+
+              <Carousel opts={{align: "start", loop: true,}} className={'pb-0 mb-0'}>
+                  <CarouselContent >
                       {Object.entries(maps).map(([key, value], index) => {
                           return (
-                              <CarouselItem
-                                  className={'basis-1/3'}
+                              <CarouselItem key={key}
+                                  className={'w-16'}
                                   isActive={index === activeIndex}
                               >
-                                  <MapCard map={value}/>
+                                  <MapCard map={value} className={''}/>
                               </CarouselItem>
                           )
                       })}
@@ -72,11 +77,8 @@ export function MapWise() {
                   <CarouselNext/>
               </Carousel>
           </div>
-          <Card className={'rounded-none rounded-b-md w-full'}>
-              <CardHeader>
-                  <CardTitle className={`text-center`}>Map Data</CardTitle>
-                  <CardDescription className={`text-center`}>Click on a map for more details.</CardDescription>
-              </CardHeader>
+          <Card className={'border-0 justify-center'}>
+
               <CardContent className={'m-0 p-0'}>
 
                   <div className={`flex flex-row space-x-20 duration-1000 py-4 px-14 w-full justify-center`}>
