@@ -50,41 +50,40 @@ const maps = {
 
 
 export function MapWise() {
-  const [activeIndex, setActiveIndex] = useState(1);
+  const mapKeys = Object.keys(maps);
+  const [activeMap, setActiveMap] = useState(mapKeys[0]);
 
   return (
-      <div className={`flex flex-col m-14 my-4 duration-1000 w-full border border-ring`}>
-          <CardHeader>
-                  <CardTitle className={`r`}>Map Data: {' map'}</CardTitle>
-                  <CardDescription className={``}>Click on a map for more details.</CardDescription>
-              </CardHeader>
-          <div className={`flex flex-row duration-1000 w-full justify-center items-center px-4`}>
+    <div className={`flex flex-col m-14 my-4 duration-1000 w-full border border-ring`}>
+      <div className={`flex flex-row duration-1000 w-full px-4 justify-between`}>
+        <CardHeader>
+            <CardTitle className={``}>Map Data: <span className={'font-semibold'}>{activeMap.toUpperCase()}</span></CardTitle>
+          <CardDescription className={``}>Click on a map for more details.</CardDescription>
+        </CardHeader>
 
-              <Carousel opts={{align: "start", loop: true,}} className={'pb-0 mb-0'}>
-                  <CarouselContent >
-                      {Object.entries(maps).map(([key, value], index) => {
-                          return (
-                              <CarouselItem key={key}
-                                  className={'w-16'}
-                                  isActive={index === activeIndex}
-                              >
-                                  <MapCard map={value} className={''}/>
-                              </CarouselItem>
-                          )
-                      })}
-                  </CarouselContent>
-                  <CarouselPrevious/>
-                  <CarouselNext/>
-              </Carousel>
-          </div>
-          <Card className={'border-0 justify-center'}>
-
-              <CardContent className={'m-0 p-0'}>
-
-                  <div className={`flex flex-row space-x-20 duration-1000 py-4 px-14 w-full justify-center`}>
-                  </div>
-              </CardContent>
-          </Card>
+        <Carousel opts={{align: "start", loop: true,}} className={'p-2 m-4 mr-14'} mapKeys={mapKeys}
+                  activeMap={activeMap} setActiveMap={setActiveMap}>
+          <CarouselContent >
+            {Object.entries(maps).map(([key, value], index) => {
+              return (
+                <CarouselItem key={key}
+                  className={'w-16'}
+                >
+                  <MapCard map={value} className={''}/>
+                </CarouselItem>
+              )
+            })}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
       </div>
+      <Card className={'border-0 justify-center'}>
+        <CardContent className={'m-0 p-0'}>
+          <div className={`flex flex-row space-x-20 duration-1000 py-4 px-14 w-full justify-center`}>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
   )
 }

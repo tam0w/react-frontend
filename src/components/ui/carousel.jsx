@@ -5,6 +5,7 @@ import useEmblaCarousel from "embla-carousel-react";
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import {useState} from "react";
 
 const CarouselContext = React.createContext(null)
 
@@ -26,6 +27,9 @@ const Carousel = React.forwardRef((
     plugins,
     className,
     children,
+    mapKeys,
+    activeMap,
+    setActiveMap,
     ...props
   },
   ref
@@ -35,7 +39,7 @@ const Carousel = React.forwardRef((
     ...opts,
     axis: orientation === "horizontal" ? "x" : "y",
   }, plugins)
-  const [canScrollPrev, setCanScrollPrev] = React.useState(false)
+    const [canScrollPrev, setCanScrollPrev] = React.useState(false)
   const [canScrollNext, setCanScrollNext] = React.useState(false)
 
   const onSelect = React.useCallback((api) => {
@@ -48,13 +52,18 @@ const Carousel = React.forwardRef((
   }, [])
 
   const scrollPrev = React.useCallback(() => {
+    const currentIndex = mapKeys.indexOf(activeMap);
+    const prevIndex = (currentIndex - 1 + mapKeys.length) % mapKeys.length;
+    setActiveMap(mapKeys[prevIndex]);
     api?.scrollPrev()
-  }, [api])
+  }, [api, activeMap, mapKeys])
 
   const scrollNext = React.useCallback(() => {
+    const currentIndex = mapKeys.indexOf(activeMap);
+    const nextIndex = (currentIndex + 1) % mapKeys.length;
+    setActiveMap(mapKeys[nextIndex]);
     api?.scrollNext()
-  }, [api])
-
+  }, [api, activeMap, mapKeys])
   const handleKeyDown = React.useCallback((event) => {
     if (event.key === "ArrowLeft") {
       event.preventDefault()
