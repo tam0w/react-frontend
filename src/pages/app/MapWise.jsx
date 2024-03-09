@@ -58,7 +58,7 @@ export function MapWise() {
       <div className={`flex flex-row duration-1000 w-full px-4 justify-between`}>
         <CardHeader>
             <CardTitle className={``}>Map Data: <span className={'font-semibold'}>{activeMap.toUpperCase()}</span></CardTitle>
-          <CardDescription className={``}>Click on a map for more details.</CardDescription>
+          <CardDescription className={``}></CardDescription>
         </CardHeader>
 
         <Carousel opts={{align: "start", loop: true,}} className={'p-2 m-4 mr-14'} mapKeys={mapKeys}
