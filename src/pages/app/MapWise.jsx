@@ -2,6 +2,7 @@ import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/compo
 import {MapCard} from "@/pages/app/mapwise/MapCard.jsx";
 import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from "@/components/ui/carousel.jsx";
 import {useState} from "react";
+import {TextWhiteBox} from "@/demo/TextWhiteBox.jsx";
 
 const maps = {
     split:
@@ -58,7 +59,11 @@ export function MapWise() {
       <div className={`flex flex-row duration-1000 w-full px-4 justify-between`}>
         <CardHeader>
             <CardTitle className={``}>Map Data: <span className={'font-semibold'}>{activeMap.toUpperCase()}</span></CardTitle>
-          <CardDescription className={``}></CardDescription>
+          <CardDescription className={`space-y-4`}>
+              <TextWhiteBox text={'Sites: ' + maps[activeMap].sites} className={'h-8 items-center justify-center'} textClass={'items-center justify-center'} />
+              <TextWhiteBox text={'Sites: ' + maps[activeMap].sites} className={'h-8 items-center justify-center'} textClass={'items-center justify-center'} />
+              <TextWhiteBox text={'Sites: ' + maps[activeMap].sites} className={'h-8 items-center justify-center'} textClass={'items-center justify-center'} />
+          </CardDescription>
         </CardHeader>
 
         <Carousel opts={{align: "start", loop: true,}} className={'p-2 m-4 mr-14'} mapKeys={mapKeys}
