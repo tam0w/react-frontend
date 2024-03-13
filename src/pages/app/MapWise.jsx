@@ -55,18 +55,32 @@ export function MapWise() {
   const [activeMap, setActiveMap] = useState(mapKeys[0]);
 
   return (
-    <div className={`flex flex-col m-14 my-4 duration-1000 w-full border border-ring`}>
+    <div className={`flex flex-col m-14 my-4 duration-1000 w-full border border-ring mr-8`}>
       <div className={`flex flex-row duration-1000 w-full px-4 justify-between`}>
         <CardHeader>
             <CardTitle className={``}>Map Data: <span className={'font-semibold'}>{activeMap.toUpperCase()}</span></CardTitle>
-          <CardDescription className={`space-y-4`}>
+          <CardDescription className={`space-y-4 pt-4`}>
+              <div className={'flex flex-row space-x-4'}>
+              <div className={'space-y-4 w-72'}>
               <TextWhiteBox text={'Sites: ' + maps[activeMap].sites} className={'h-8 items-center justify-center'} textClass={'items-center justify-center'} />
               <TextWhiteBox text={'Sites: ' + maps[activeMap].sites} className={'h-8 items-center justify-center'} textClass={'items-center justify-center'} />
               <TextWhiteBox text={'Sites: ' + maps[activeMap].sites} className={'h-8 items-center justify-center'} textClass={'items-center justify-center'} />
+              </div>
+              <div className={'space-y-4 w-72'}>
+              <TextWhiteBox text={'Sites: ' + maps[activeMap].sites} className={'h-8 items-center justify-center'} textClass={'items-center justify-center'} />
+              <TextWhiteBox text={'Sites: ' + maps[activeMap].sites} className={'h-8 items-center justify-center'} textClass={'items-center justify-center'} />
+              <TextWhiteBox text={'Sites: ' + maps[activeMap].sites} className={'h-8 items-center justify-center'} textClass={'items-center justify-center'} />
+              </div>
+              <div className={'space-y-4 w-72'}>
+              <TextWhiteBox text={'Sites: ' + maps[activeMap].sites} className={'h-8 items-center justify-center'} textClass={'items-center justify-center'} />
+              <TextWhiteBox text={'Sites: ' + maps[activeMap].sites} className={'h-8 items-center justify-center'} textClass={'items-center justify-center'} />
+              <TextWhiteBox text={'Sites: ' + maps[activeMap].sites} className={'h-8 items-center justify-center'} textClass={'items-center justify-center'} />
+              </div>
+              </div>
           </CardDescription>
         </CardHeader>
 
-        <Carousel opts={{align: "start", loop: true,}} className={'p-2 m-4 mr-14'} mapKeys={mapKeys}
+        <Carousel opts={{align: "start", loop: true,}} className={'p-2 m-4 mr-12 mt-8'} mapKeys={mapKeys}
                   activeMap={activeMap} setActiveMap={setActiveMap}>
           <CarouselContent >
             {Object.entries(maps).map(([key, value], index) => {
