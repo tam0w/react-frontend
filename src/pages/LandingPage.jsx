@@ -1,8 +1,8 @@
-import {Navbar} from "@/demo/Navbar.jsx";
-import {Counter} from "@/demo/Counter.jsx";
+import {Navbar} from "@/localComponents/Navbar.jsx";
+import {Counter} from "@/localComponents/Counter.jsx";
 import {Separator} from "@/components/ui/separator.jsx";
-import {GetAPI} from "@/demo/GetAPI.jsx";
-import {PostAPI} from "@/demo/PostAPI.jsx";
+import {GetAPI} from "@/localComponents/GetAPI.jsx";
+import {PostAPI} from "@/localComponents/PostAPI.jsx";
 
 export function LandingPage() {
     return (

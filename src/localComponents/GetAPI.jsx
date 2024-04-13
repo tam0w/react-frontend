@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {Button} from "@/components/ui/button.jsx";
-import {ButtonSpin} from "@/demo/ButtonSpin.jsx";
+import {ButtonSpin} from "@/localComponents/ButtonSpin.jsx";
 import {Card} from "@/components/ui/card.jsx";
 
 const url = "https://rest-api-t8pa.onrender.com/"

@@ -1,4 +1,4 @@
-import Sidebar, {SidebarItem} from "@/demo/Sidebar.jsx";
+import Sidebar, {SidebarItem} from "@/localComponents/Sidebar.jsx";
 import {
     ActivityLogIcon, BarChartIcon,
     BellIcon,

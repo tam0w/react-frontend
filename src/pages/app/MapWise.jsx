@@ -2,7 +2,7 @@ import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/compo
 import {MapCard} from "@/pages/app/mapwise/MapCard.jsx";
 import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from "@/components/ui/carousel.jsx";
 import {useState} from "react";
-import {TextWhiteBox} from "@/demo/TextWhiteBox.jsx";
+import {TextWhiteBox} from "@/localComponents/TextWhiteBox.jsx";
 
 const maps = {
     split:

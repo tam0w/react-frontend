@@ -8,7 +8,7 @@ import {SubSubAgentPlayrate} from "@/pages/app/trends/SubSubAgentPlayrate.jsx";
 import {StatSubSubCard} from "@/pages/app/trends/StatSubSubCard.jsx";
 import {SubSubAgentPlayrateTopAgents} from "@/pages/app/trends/SubSubAgentPlayrateTopAgents.jsx";
 import {SubSubBarGraph1VaryingStats} from "@/pages/app/trends/SubSubBarGraph1VaryingStats.jsx";
-import {ButtonSpin} from "@/demo/ButtonSpin.jsx";
+import {ButtonSpin} from "@/localComponents/ButtonSpin.jsx";
 
 const stat_list = ['KD', 'Kdiff', 'KAST', 'FBPR', 'TFB', 'FKdiff', 'OPkpr', 'Clutches', 'ADR', 'clutchrate']
 

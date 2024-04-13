@@ -1,6 +1,6 @@
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card.jsx";
 import {ArrowDownIcon, ArrowUpIcon} from "@radix-ui/react-icons";
-import {TextWhiteBox} from "@/demo/TextWhiteBox.jsx";
+import {TextWhiteBox} from "@/localComponents/TextWhiteBox.jsx";
 
 export function TeamPercentages() {
     return (

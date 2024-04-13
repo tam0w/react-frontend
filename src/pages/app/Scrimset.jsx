@@ -1,6 +1,6 @@
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card.jsx";
 import {useEffect, useState} from "react";
-import {RoundData} from "@/demo/RoundData.jsx";
+import {RoundData} from "@/localComponents/RoundData.jsx";
 import {ChevronLeftIcon, ChevronRightIcon, DoubleArrowLeftIcon} from "@radix-ui/react-icons";
 import {List} from "@radix-ui/react-navigation-menu";
 import {Slider} from "@/components/ui/slider.jsx";

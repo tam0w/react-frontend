@@ -5,7 +5,7 @@ import {Trends} from "@/pages/app/Trends.jsx";
 import {MatchReport} from "@/pages/app/MatchReport.jsx";
 import {Scrimset} from "@/pages/app/Scrimset.jsx";
 import {MapWise} from "@/pages/app/MapWise.jsx";
-import {ButtonSpin} from "@/demo/ButtonSpin.jsx";
+import {ButtonSpin} from "@/localComponents/ButtonSpin.jsx";
 import {Today} from "@/pages/app/Today.jsx";
 import {Query} from "@/pages/app/Query.jsx";
 

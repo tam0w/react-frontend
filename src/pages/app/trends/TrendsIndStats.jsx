@@ -3,7 +3,7 @@ import {Dialog, DialogContent, DialogTrigger} from "@/components/ui/dialog.jsx";
 import {SubCardIndStats} from "@/pages/app/trends/SubCardIndStats.jsx";
 import {PlayerCardOverview} from "@/pages/app/trends/PlayerCardOverview.jsx";
 import {useEffect, useState} from "react";
-import {ButtonSpin} from "@/demo/ButtonSpin.jsx";
+import {ButtonSpin} from "@/localComponents/ButtonSpin.jsx";
 
 const url1 = 'https://server.blix.gg/imgproxy/6oKZIAOp6byf3ww1bl9iS7pCGmadK_GRxcyLzuvw6UA/rs:fit:260:260:0/g:no/aHR0cHM6Ly9zdGF0aWMud2lraWEubm9jb29raWUubmV0L3ZhbG9yYW50L2ltYWdlcy81LzUzL0JyZWFjaF9pY29uLnBuZw.webp'
 const url2 = 'https://server.blix.gg/imgproxy/duUZ5s7GpMbUVpp0kGvsMik_bQEyrP0ZXfioj6WWj1c/rs:fit:260:260:0/g:no/aHR0cHM6Ly9zdGF0aWMud2lraWEubm9jb29raWUubmV0L3ZhbG9yYW50L2ltYWdlcy8zLzM1L0pldHRfaWNvbi5wbmc.webp'
