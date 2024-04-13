@@ -16,4 +16,6 @@ This project implements the following:
 
 - Various different stunning dashboard components including a 2D match summary for valorant matches, sortable tables based on agent-pickrates and more.
 
-`Consumes the mock api at https://rest-api-t8pa.onrender.com/`
+![](https://i.imgur.com/Shzcix4.png)
+
+> Consumes the mock api at [https://rest-api-t8pa.onrender.com/](https://rest-api-t8pa.onrender.com/)
