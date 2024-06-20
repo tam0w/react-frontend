@@ -8,7 +8,7 @@ This project implements the following:
 
 - A basic react message board, that consumes an api, and POSTs new messages to an api aswell. Stores all the POST-ed messages from the current session in the board.
 
-- A web-app type SPA dashboard with a retractable side-bar.
+- A web-app type SPA dashboard with an expandable side-bar.
 
 - A detailed implementation of recharts to create dynamic graphs based on random data consumed from the mock-api.
 
